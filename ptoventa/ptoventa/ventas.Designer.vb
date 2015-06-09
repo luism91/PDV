@@ -30,7 +30,6 @@ Partial Public Class ventas
         Me.MenuItem6 = New System.Windows.Forms.MenuItem
         Me.MenuItem4 = New System.Windows.Forms.MenuItem
         Me.MenuItem7 = New System.Windows.Forms.MenuItem
-        Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -68,6 +67,7 @@ Partial Public Class ventas
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
         Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,14 +116,6 @@ Partial Public Class ventas
         '
         Me.MenuItem7.Text = "Nueva venta"
         '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(4, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 20)
-        Me.Label1.Text = "Cliente"
-        '
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
@@ -149,10 +141,10 @@ Partial Public Class ventas
         '
         Me.ComboBox1.DataSource = Me.clientesBindingSource
         Me.ComboBox1.DisplayMember = "nombrecliente"
-        Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.ComboBox1.Location = New System.Drawing.Point(53, 5)
+        Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.ComboBox1.Location = New System.Drawing.Point(57, 3)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(154, 20)
+        Me.ComboBox1.Size = New System.Drawing.Size(163, 19)
         Me.ComboBox1.TabIndex = 5
         Me.ComboBox1.TabStop = False
         '
@@ -322,7 +314,7 @@ Partial Public Class ventas
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.ComboBox2)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.ComboBox1)
         Me.Panel1.Controls.Add(Me.txtbusqueda)
@@ -430,6 +422,17 @@ Partial Public Class ventas
         Me.PtoventaDataSet.Prefix = ""
         Me.PtoventaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'ComboBox2
+        '
+        Me.ComboBox2.DataSource = Me.clientesBindingSource
+        Me.ComboBox2.DisplayMember = "codigocliente"
+        Me.ComboBox2.Enabled = False
+        Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.ComboBox2.Location = New System.Drawing.Point(4, 3)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(46, 19)
+        Me.ComboBox2.TabIndex = 8
+        '
         'ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -475,7 +478,6 @@ Partial Public Class ventas
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
@@ -521,4 +523,5 @@ Partial Public Class ventas
     Friend WithEvents ClientesTableAdapter1 As ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
     Friend WithEvents clientesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PtoventaDataSet As ptoventa.ptoventaDataSet
+    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
 End Class

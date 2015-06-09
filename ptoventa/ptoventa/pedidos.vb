@@ -16,11 +16,12 @@ Public Class pedidos
     Dim row As DataRowView
     Dim conn As New SqlCeConnection("Data Source=\Program Files\ptoventa\ptoventa.sdf")
     Dim dataprod As New SqlCeDataAdapter("SELECT * FROM productos ORDER BY codigo ASC", conn)
-    Dim datapedi As New SqlCeDataAdapter("SELECT * FROM pedidos", conn)
+    Dim datapedi As New SqlCeDataAdapter("SELECT * FROM ventas", conn)
     Dim tablaquery As New DataView
     Dim tablacargas As New DataView
     Dim dsprod As New DataSet
     Dim dsped As New DataSet
+    Dim generarnota, codventa As Integer
 
 
 
@@ -30,29 +31,31 @@ Public Class pedidos
         conn.Open()
 
         dataprod.Fill(dsprod, "productos")
-        datapedi.Fill(dsped, "pedidos")
+        datapedi.Fill(dsped, "ventas")
 
         tablaquery.Table = dsprod.Tables("productos")
-
-        tablacargas.Table = dsped.Tables("pedidos")
-
+        tablacargas.Table = dsped.Tables("ventas")
         lstdescripcion2.DataSource = tablaquery
         lstdescripcion2.DisplayMember = "descripcion"
         lstprecio2.DataSource = tablaquery
         lstprecio2.DisplayMember = "precio"
         lstcodigo2.DataSource = tablaquery
         lstcodigo2.DisplayMember = "codigo"
+        generarnota = 0
 
     End Sub
     Public Function cargarnota(ByVal codigocliente As Integer) As Integer
 
         dsped.Clear()
-        datapedi.Fill(dsped, "pedidos")
+        datapedi.Fill(dsped, "ventas")
         lstcantidad.Items.Clear()
         lstdescripcion.Items.Clear()
         lstcodigo.Items.Clear()
 
-        tablacargas.RowFilter = "codigocliente ='" & codigocliente & "'"
+
+        'Filtrar por codigo de cliente y si la nota esta abierta.
+        tablacargas.RowFilter = "codigocliente ='" & codigocliente & "' AND venta_finalizada =0"
+        codventa = CInt(tablacargas.Item(0).Row(5).ToString)
 
         If tablacargas.Count = 0 Then
             MsgBox("No hay notas pendientes", MsgBoxStyle.OkOnly, "Notas")
@@ -103,44 +106,49 @@ Public Class pedidos
 
         Else
 
-            If ComboBox1.SelectedIndex + 1 > 1 Then
+            If ComboBox2.SelectedItem >= 1 And generarnota = 1 Then
+                ComboBox1.Enabled = False
                 cmd.Connection = conn
-                cmd.CommandText = "INSERT INTO pedidos(codigocliente,codigoproducto,descripcion,cantidad) VALUES('" & ComboBox1.SelectedIndex + 1 & "','" & lstcodigo2.Text & "','" & lstdescripcion2.Text & "','" & txtcantidad.Text & "')"
+                cmd.CommandText = "INSERT INTO ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedItem & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
                 cmd.ExecuteNonQuery()
-            End If
 
-            desc = lstdescripcion2.Text
-            precio = Val(lstprecio2.Text)
-            codigo = lstcodigo2.Text
-            If txtcantidad.Text = Nothing Then
-                cantidad = 0
-                txtcantidad.Text = 0
-            End If
-            importe = Val(lstprecio2.Text) * Val(txtcantidad.Text)
-            cantidad = Val(txtcantidad.Text)
-            lstcodigo.Items.Add(codigo)
-            lstdescripcion.Items.Add(desc)
-            lstprecio.Items.Add(Format(CDec(precio), ".00"))
-            lstimporte.Items.Add(Format(CDec(importe), ".00"))
-            lstcantidad.Items.Add(cantidad)
-
-            If lstdescripcion3.Items.Count = 2 Then
-                lstcantidad3.Items.Clear()
-                lstdescripcion3.Items.Clear()
-                lstprecio3.Items.Clear()
-                lstimp4.Items.Clear()
-
-                lstdescripcion3.Items.Add(desc)
-                lstprecio3.Items.Add(Format(CDec(precio), ".00"))
-                lstimp4.Items.Add(Format(CDec(importe), ".00"))
-                lstcantidad3.Items.Add(cantidad)
+                cmd.Connection = conn
+                cmd.CommandText = "INSERT INTO detalle_ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedItem & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
+                cmd.ExecuteNonQuery()
             Else
-                lstdescripcion3.Items.Add(desc)
-                lstprecio3.Items.Add(Format(CDec(precio), ".00"))
-                lstimp4.Items.Add(Format(CDec(importe), ".00"))
-                lstcantidad3.Items.Add(cantidad)
-            End If
 
+                desc = lstdescripcion2.Text
+                precio = Val(lstprecio2.Text)
+                codigo = lstcodigo2.Text
+                If txtcantidad.Text = Nothing Then
+                    cantidad = 0
+                    txtcantidad.Text = 0
+                End If
+                importe = Val(lstprecio2.Text) * Val(txtcantidad.Text)
+                cantidad = Val(txtcantidad.Text)
+                lstcodigo.Items.Add(codigo)
+                lstdescripcion.Items.Add(desc)
+                lstprecio.Items.Add(Format(CDec(precio), ".00"))
+                lstimporte.Items.Add(Format(CDec(importe), ".00"))
+                lstcantidad.Items.Add(cantidad)
+
+                If lstdescripcion3.Items.Count = 2 Then
+                    lstcantidad3.Items.Clear()
+                    lstdescripcion3.Items.Clear()
+                    lstprecio3.Items.Clear()
+                    lstimp4.Items.Clear()
+
+                    lstdescripcion3.Items.Add(desc)
+                    lstprecio3.Items.Add(Format(CDec(precio), ".00"))
+                    lstimp4.Items.Add(Format(CDec(importe), ".00"))
+                    lstcantidad3.Items.Add(cantidad)
+                Else
+                    lstdescripcion3.Items.Add(desc)
+                    lstprecio3.Items.Add(Format(CDec(precio), ".00"))
+                    lstimp4.Items.Add(Format(CDec(importe), ".00"))
+                    lstcantidad3.Items.Add(cantidad)
+                End If
+            End If
 
             desc = ""
             precio = 0
@@ -179,11 +187,11 @@ Public Class pedidos
 
     End Sub
 
-    Private Sub MenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem1.Click
 
-    End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        'Limpiar para poder agregar una nueva nota
         txtbusqueda.Text = ""
         txtcantidad.Text = ""
         lstcantidad.Items.Clear()
@@ -192,7 +200,6 @@ Public Class pedidos
         lstprecio.Items.Clear()
         lstimporte.Items.Clear()
         txtbusqueda.Focus()
-
         lstcantidad3.Items.Clear()
         lstdescripcion3.Items.Clear()
         lstprecio3.Items.Clear()

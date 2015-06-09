@@ -229,8 +229,6 @@ Partial Public Class ptoventaDataSet
         
         Private columncodigocliente As Global.System.Data.DataColumn
         
-        Private columnvend As Global.System.Data.DataColumn
-        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub New()
             MyBase.New
@@ -272,13 +270,6 @@ Partial Public Class ptoventaDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public ReadOnly Property vendColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnvend
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public ReadOnly Property Count() As Integer
             Get
                 Return Me.Rows.Count
@@ -306,12 +297,17 @@ Partial Public Class ptoventaDataSet
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Overloads Function AddclientesRow(ByVal nombrecliente As String, ByVal vend As Integer) As clientesRow
+        Public Overloads Function AddclientesRow(ByVal nombrecliente As String) As clientesRow
             Dim rowclientesRow As clientesRow = CType(Me.NewRow,clientesRow)
-            Dim columnValuesArray() As Object = New Object() {nombrecliente, Nothing, vend}
+            Dim columnValuesArray() As Object = New Object() {nombrecliente, Nothing}
             rowclientesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowclientesRow)
             Return rowclientesRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function FindBycodigocliente(ByVal codigocliente As Integer) As clientesRow
+            Return CType(Me.Rows.Find(New Object() {codigocliente}),clientesRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -330,7 +326,6 @@ Partial Public Class ptoventaDataSet
         Friend Sub InitVars()
             Me.columnnombrecliente = MyBase.Columns("nombrecliente")
             Me.columncodigocliente = MyBase.Columns("codigocliente")
-            Me.columnvend = MyBase.Columns("vend")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -339,14 +334,14 @@ Partial Public Class ptoventaDataSet
             MyBase.Columns.Add(Me.columnnombrecliente)
             Me.columncodigocliente = New Global.System.Data.DataColumn("codigocliente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncodigocliente)
-            Me.columnvend = New Global.System.Data.DataColumn("vend", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnvend)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columncodigocliente}, true))
             Me.columnnombrecliente.MaxLength = 255
             Me.columncodigocliente.AutoIncrement = true
             Me.columncodigocliente.AutoIncrementSeed = -1
             Me.columncodigocliente.AutoIncrementStep = -1
             Me.columncodigocliente.AllowDBNull = false
             Me.columncodigocliente.ReadOnly = true
+            Me.columncodigocliente.Unique = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -506,20 +501,6 @@ Partial Public Class ptoventaDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property vend() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableclientes.vendColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'vend' in table 'clientes' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableclientes.vendColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Function IsnombreclienteNull() As Boolean
             Return Me.IsNull(Me.tableclientes.nombreclienteColumn)
         End Function
@@ -527,16 +508,6 @@ Partial Public Class ptoventaDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub SetnombreclienteNull()
             Me(Me.tableclientes.nombreclienteColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Function IsvendNull() As Boolean
-            Return Me.IsNull(Me.tableclientes.vendColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Sub SetvendNull()
-            Me(Me.tableclientes.vendColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -664,14 +635,23 @@ Namespace ptoventaDataSetTableAdapters
             tableMapping.DataSetTable = "clientes"
             tableMapping.ColumnMappings.Add("nombrecliente", "nombrecliente")
             tableMapping.ColumnMappings.Add("codigocliente", "codigocliente")
-            tableMapping.ColumnMappings.Add("vend", "vend")
             Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlServerCe.SqlCeCommand
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [clientes] WHERE (([codigocliente] = @p1))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "codigocliente", Global.System.Data.DataRowVersion.Original, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.SqlServerCe.SqlCeCommand
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [clientes] ([nombrecliente], [vend]) VALUES (@p1, @p2)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [clientes] ([nombrecliente]) VALUES (@p1)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "nombrecliente", Global.System.Data.DataRowVersion.Current, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "vend", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlServerCe.SqlCeCommand
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [clientes] SET [nombrecliente] = @p1 WHERE (([codigocliente] = @p2))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "nombrecliente", Global.System.Data.DataRowVersion.Current, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlServerCe.SqlCeParameter("@p2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, true, 0, 0, "codigocliente", Global.System.Data.DataRowVersion.Original, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -686,7 +666,7 @@ Namespace ptoventaDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlServerCe.SqlCeCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlServerCe.SqlCeCommand
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT [nombrecliente], [codigocliente], [vend] FROM [clientes]"
+            Me._commandCollection(0).CommandText = "SELECT        clientes.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            clientes"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -731,17 +711,31 @@ Namespace ptoventaDataSetTableAdapters
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal p1 As Integer) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(p1,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal p1 As String, ByVal p2 As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert(ByVal p1 As String) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(p1,String)
-            End If
-            If (p2.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(p2.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -754,6 +748,30 @@ Namespace ptoventaDataSetTableAdapters
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
                     Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal p1 As String, ByVal p2 As Integer) As Integer
+            If (p1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(p1,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(p2,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
         End Function

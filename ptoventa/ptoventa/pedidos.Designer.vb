@@ -29,9 +29,9 @@ Partial Public Class pedidos
         Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.MenuItem4 = New System.Windows.Forms.MenuItem
         Me.MenuItem5 = New System.Windows.Forms.MenuItem
-        Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
         Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.txtbusqueda = New System.Windows.Forms.TextBox
         Me.lstdescripcion2 = New System.Windows.Forms.ListBox
@@ -61,7 +61,7 @@ Partial Public Class pedidos
         Me.lstcantidad3 = New System.Windows.Forms.ListBox
         Me.lstdescripcion3 = New System.Windows.Forms.ListBox
         Me.Label14 = New System.Windows.Forms.Label
-        Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,14 +105,6 @@ Partial Public Class pedidos
         '
         Me.MenuItem5.Text = "Ir a Menu Prin."
         '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(1, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 20)
-        Me.Label1.Text = "Cliente"
-        '
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
@@ -126,14 +118,20 @@ Partial Public Class pedidos
         Me.clientesBindingSource.DataMember = "clientes"
         Me.clientesBindingSource.DataSource = Me.PtoventaDataSet
         '
+        'PtoventaDataSet
+        '
+        Me.PtoventaDataSet.DataSetName = "ptoventaDataSet"
+        Me.PtoventaDataSet.Prefix = ""
+        Me.PtoventaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'ComboBox1
         '
         Me.ComboBox1.DataSource = Me.clientesBindingSource
         Me.ComboBox1.DisplayMember = "nombrecliente"
-        Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.ComboBox1.Location = New System.Drawing.Point(46, 2)
+        Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.ComboBox1.Location = New System.Drawing.Point(55, 1)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(176, 20)
+        Me.ComboBox1.Size = New System.Drawing.Size(168, 19)
         Me.ComboBox1.TabIndex = 3
         Me.ComboBox1.TabStop = False
         '
@@ -375,11 +373,16 @@ Partial Public Class pedidos
         Me.Label14.Size = New System.Drawing.Size(151, 15)
         Me.Label14.Text = "Ultimos productos agregados"
         '
-        'PtoventaDataSet
+        'ComboBox2
         '
-        Me.PtoventaDataSet.DataSetName = "ptoventaDataSet"
-        Me.PtoventaDataSet.Prefix = ""
-        Me.PtoventaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.ComboBox2.DataSource = Me.clientesBindingSource
+        Me.ComboBox2.DisplayMember = "codigocliente"
+        Me.ComboBox2.Enabled = False
+        Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.ComboBox2.Location = New System.Drawing.Point(4, 1)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(46, 19)
+        Me.ComboBox2.TabIndex = 62
         '
         'ClientesTableAdapter1
         '
@@ -391,6 +394,7 @@ Partial Public Class pedidos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 268)
+        Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.lstimp4)
         Me.Controls.Add(Me.lstprecio3)
@@ -421,7 +425,6 @@ Partial Public Class pedidos
         Me.Controls.Add(Me.txtbusqueda)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.KeyPreview = True
         Me.Menu = Me.mainMenu1
         Me.Name = "pedidos"
@@ -431,7 +434,6 @@ Partial Public Class pedidos
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents txtbusqueda As System.Windows.Forms.TextBox
@@ -471,5 +473,6 @@ Partial Public Class pedidos
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents clientesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PtoventaDataSet As ptoventa.ptoventaDataSet
+    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents ClientesTableAdapter1 As ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
 End Class

@@ -185,7 +185,7 @@
   <ItemGroup>
     <Content Include="apple1.ico" />
     <Content Include="ptoventa.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
