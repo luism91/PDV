@@ -1,0 +1,247 @@
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+E:\Punto de venta movil\Resp\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+G:\Imgs De CD\Visual studio\2008\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+G:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+H:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+E:\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+C:\Users\Wicho\Desktop\USB\Punto de venta movil\FINAL\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+H:\Proyectos\Punto de venta movil\FINAL 21-10-2011\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+H:\Proyectos\Punto de venta movil\FINAL 05-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+H:\Proyectos\Punto de venta movil\FINAL 13-11-2011\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\ptoventa.sdf
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\ptoventa.exe
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\ptoventa.pdb
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\ptoventa.xml
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.dll
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\System.Data.SqlClient.dll
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\ZSDK_API.dll
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.dll
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.dll
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.PocketOutlook.xml
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.xml
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\bin\Debug\Microsoft.WindowsMobile.Forms.xml
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.Clientes.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.exe
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.xml
+C:\Users\UGMWS\Desktop\Ptoventamovil\Solution\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
