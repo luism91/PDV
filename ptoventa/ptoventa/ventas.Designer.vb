@@ -33,6 +33,7 @@ Partial Public Class ventas
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
+        Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.txtbusqueda = New System.Windows.Forms.TextBox
         Me.txtcantidad = New System.Windows.Forms.TextBox
@@ -66,10 +67,9 @@ Partial Public Class ventas
         Me.Label16 = New System.Windows.Forms.Label
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
-        Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
-        Me.Panel1.SuspendLayout()
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -140,8 +140,15 @@ Partial Public Class ventas
         Me.Label3.Size = New System.Drawing.Size(61, 20)
         Me.Label3.Text = "Cantidad"
         '
+        'clientesBindingSource
+        '
+        Me.clientesBindingSource.DataMember = "clientes"
+        Me.clientesBindingSource.DataSource = Me.PtoventaDataSet
+        '
         'ComboBox1
         '
+        Me.ComboBox1.DataSource = Me.clientesBindingSource
+        Me.ComboBox1.DisplayMember = "nombrecliente"
         Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
         Me.ComboBox1.Location = New System.Drawing.Point(53, 5)
         Me.ComboBox1.Name = "ComboBox1"
@@ -417,11 +424,6 @@ Partial Public Class ventas
         '
         Me.ClientesTableAdapter1.ClearBeforeFill = True
         '
-        'clientesBindingSource
-        '
-        Me.clientesBindingSource.DataMember = "clientes"
-        Me.clientesBindingSource.DataSource = Me.PtoventaDataSet
-        '
         'PtoventaDataSet
         '
         Me.PtoventaDataSet.DataSetName = "ptoventaDataSet"
@@ -467,8 +469,8 @@ Partial Public Class ventas
         Me.Menu = Me.mainMenu1
         Me.Name = "ventas"
         Me.Text = "Ventas"
-        Me.Panel1.ResumeLayout(False)
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

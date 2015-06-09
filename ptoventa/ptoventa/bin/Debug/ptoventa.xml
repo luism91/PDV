@@ -6,7 +6,20 @@ ptoventa
 </name>
 </assembly>
 <members>
-<member name="T:ptoventa.ptoventaDataSet.clientesDataTable">
+<member name="P:ptoventa.My.Resources.Resources.ResourceManager">
+	<summary>
+   Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ptoventa.My.Resources.Resources.Culture">
+	<summary>
+   Overrides the current thread's CurrentUICulture property for all
+   resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ptoventa.My.Resources.Resources">
+	<summary>
+   A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="T:ptoventa.ptoventaDataSet.clientesDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -25,19 +38,6 @@ Represents a strongly typed in-memory cache of data.
 </member><member name="T:ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter">
 	<summary>
 Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="P:ptoventa.My.Resources.Resources.ResourceManager">
-	<summary>
-   Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:ptoventa.My.Resources.Resources.Culture">
-	<summary>
-   Overrides the current thread's CurrentUICulture property for all
-   resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:ptoventa.My.Resources.Resources">
-	<summary>
-   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
 </member>
 </members>
