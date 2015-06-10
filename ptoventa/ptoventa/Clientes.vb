@@ -21,13 +21,13 @@ Public Class Clientes
         If RadioButton1.Checked = True Then
 
             cmd.Connection = conn
-            cmd.CommandText = "INSERT INTO clientes(nombrecliente,vend) VALUES('" & TextBox1.Text & "',0)"
+            cmd.CommandText = "INSERT INTO clientes(nombrecliente) VALUES('" & UCase(TextBox1.Text) & "')"
             cmd.ExecuteNonQuery()
             MsgBox("Cliente agregado correctamete", MsgBoxStyle.OkOnly, "Alta Clientes")
 
         ElseIf RadioButton2.Checked = True Then
             cmd.Connection = conn
-            cmd.CommandText = "INSERT INTO clientes(nombrecliente,vend) VALUES('" & TextBox1.Text & "',1)"
+            cmd.CommandText = "INSERT INTO clientes(nombrecliente) VALUES('" & UCase(TextBox1.Text) & "')"
             cmd.ExecuteNonQuery()
             MsgBox("Vendedor cueros agregado correctamente", MsgBoxStyle.OkOnly, "Alta Vend. Cueros")
         End If
@@ -55,17 +55,17 @@ Public Class Clientes
     End Sub
 
     Private Sub RadioButton1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton1.CheckedChanged
-        dataprod = New SqlCeDataAdapter("SELECT * FROM clientes WHERE vend=0", conn)
+        dataprod = New SqlCeDataAdapter("SELECT * FROM clientes", conn)
         dsclientes.Clear()
         dataprod.Fill(dsclientes, "clientes")
         TextBox1.Focus()
     End Sub
 
     Private Sub RadioButton2_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton2.CheckedChanged
-        dataprod = New SqlCeDataAdapter("SELECT * FROM clientes WHERE vend=1", conn)
-        dsclientes.Clear()
-        dataprod.Fill(dsclientes, "clientes")
-        TextBox1.Focus()
+        'dataprod = New SqlCeDataAdapter("SELECT * FROM clientes WHERE vend=1", conn)
+        'dsclientes.Clear()
+        'dataprod.Fill(dsclientes, "clientes")
+        'TextBox1.Focus()
     End Sub
 
     Private Sub TextBox1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown

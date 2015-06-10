@@ -109,6 +109,7 @@
     <Compile Include="corte.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Funciones.vb" />
     <Compile Include="modifproductos.Designer.vb">
       <DependentUpon>modifproductos.vb</DependentUpon>
     </Compile>

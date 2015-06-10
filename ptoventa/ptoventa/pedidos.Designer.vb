@@ -232,7 +232,6 @@ Partial Public Class pedidos
         Me.lstcodigo.Size = New System.Drawing.Size(101, 41)
         Me.lstcodigo.TabIndex = 24
         Me.lstcodigo.TabStop = False
-        Me.lstcodigo.Visible = False
         '
         'Label7
         '
@@ -377,12 +376,13 @@ Partial Public Class pedidos
         '
         Me.ComboBox2.DataSource = Me.clientesBindingSource
         Me.ComboBox2.DisplayMember = "codigocliente"
-        Me.ComboBox2.Enabled = False
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown
         Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
         Me.ComboBox2.Location = New System.Drawing.Point(4, 1)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(46, 19)
         Me.ComboBox2.TabIndex = 62
+        Me.ComboBox2.ValueMember = "codigocliente"
         '
         'ClientesTableAdapter1
         '

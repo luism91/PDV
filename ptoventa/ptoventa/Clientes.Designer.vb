@@ -112,6 +112,7 @@ Partial Public Class Clientes
         Me.RadioButton2.Size = New System.Drawing.Size(106, 20)
         Me.RadioButton2.TabIndex = 12
         Me.RadioButton2.Text = "Vend. Cueros"
+        Me.RadioButton2.Visible = False
         '
         'Clientes
         '

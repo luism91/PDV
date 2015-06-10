@@ -1,40 +1,25 @@
-﻿Imports System.Data.SqlClient
-Imports System.Data.SqlServerCe
-Imports System
-Imports System.Text
-Imports System.IO.Ports
-Imports System.Threading
-Imports System.Data
-
-
+﻿Imports System.Data
 Public Class pedidos
-    Dim importe, cantidad, precio, cantinput, cantcargar, preimporte As Decimal
-    Dim fila, rowview, mover As Integer
+
+    Dim rowview As Integer
     Dim pedrow As DataRow
-    Dim desc, uni, codigo As String
-    Dim cmd As New SqlCeCommand
     Dim row As DataRowView
-    Dim conn As New SqlCeConnection("Data Source=\Program Files\ptoventa\ptoventa.sdf")
-    Dim dataprod As New SqlCeDataAdapter("SELECT * FROM productos ORDER BY codigo ASC", conn)
-    Dim datapedi As New SqlCeDataAdapter("SELECT * FROM ventas", conn)
     Dim tablaquery As New DataView
     Dim tablacargas As New DataView
-    Dim dsprod As New DataSet
-    Dim dsped As New DataSet
-    Dim generarnota, codventa As Integer
-
-
+    
 
     Private Sub pedidos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.ProductosTableAdapter1.Fill(Me.PtoventaDataSet.productos)
         Me.ClientesTableAdapter1.Fill(Me.PtoventaDataSet.clientes)
-        conn.Open()
+        If conn.State = ConnectionState.Closed Then
+            conn.Open()
+        End If
 
-        dataprod.Fill(dsprod, "productos")
-        datapedi.Fill(dsped, "ventas")
+        poblartablas()
 
         tablaquery.Table = dsprod.Tables("productos")
         tablacargas.Table = dsped.Tables("ventas")
+
         lstdescripcion2.DataSource = tablaquery
         lstdescripcion2.DisplayMember = "descripcion"
         lstprecio2.DataSource = tablaquery
@@ -53,14 +38,15 @@ Public Class pedidos
         lstcodigo.Items.Clear()
 
 
+        datapedi.SelectCommand = 
+
         'Filtrar por codigo de cliente y si la nota esta abierta.
-        tablacargas.RowFilter = "codigocliente ='" & codigocliente & "' AND venta_finalizada =0"
-        codventa = CInt(tablacargas.Item(0).Row(5).ToString)
+        tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
 
         If tablacargas.Count = 0 Then
             MsgBox("No hay notas pendientes", MsgBoxStyle.OkOnly, "Notas")
         Else
-
+            codventa = tablacargas(0)("codigoventa")
             For Me.rowview = 0 To tablacargas.Count - 1
                 tablaquery.RowFilter = "codigo = '" & tablacargas.Item(rowview).Row(1).ToString & "'"
                 lstcantidad.Items.Add(tablacargas.Item(rowview).Row(2))
@@ -71,7 +57,6 @@ Public Class pedidos
                 lstprecio.Items.Add(Format(CDec(precio), ".00"))
                 lstimporte.Items.Add(Format(CDec(importe), ".00"))
                 tablaquery.RowFilter = Nothing
-
             Next Me.rowview
         End If
 
@@ -87,16 +72,21 @@ Public Class pedidos
             txtcantidad.Focus()
         End If
 
-       
-
     End Sub
 
     Private Sub txtbusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
         tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
-        'dsprod.Tables("productos").Select("codigo LIKE '" & txtbusqueda.Text & "%'")
     End Sub
 
     Private Sub btnagregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregar.Click
+
+
+        If ComboBox1.Enabled = True Then
+            generarnota = 1
+            ComboBox1.Enabled = False
+        End If
+
+       
 
         If lstdescripcion.Items.Count = 34 Then
             MsgBox("No puedes agregar mas productos", MsgBoxStyle.OkOnly, "Limite de productos")
@@ -105,17 +95,23 @@ Public Class pedidos
             txtbusqueda.Focus()
 
         Else
+            If ComboBox2.SelectedIndex >= 1 And generarnota = 1 Then
+                Try
+                    ComboBox1.Enabled = False
+                    cmd.Connection = conn
+                    cmd.CommandText = "INSERT INTO ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedValue & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
+                    cmd.ExecuteNonQuery()
+                    generarnota = 0
+                    poblartablas()
+                    tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
+                    codventa = tablacargas(0)("codigoventa")
+                Catch ex As Exception
+                    MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
+                End Try
 
-            If ComboBox2.SelectedItem >= 1 And generarnota = 1 Then
-                ComboBox1.Enabled = False
-                cmd.Connection = conn
-                cmd.CommandText = "INSERT INTO ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedItem & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
-                cmd.ExecuteNonQuery()
+            End If
 
-                cmd.Connection = conn
-                cmd.CommandText = "INSERT INTO detalle_ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedItem & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
-                cmd.ExecuteNonQuery()
-            Else
+            If generarnota = 0 Then
 
                 desc = lstdescripcion2.Text
                 precio = Val(lstprecio2.Text)
@@ -131,6 +127,16 @@ Public Class pedidos
                 lstprecio.Items.Add(Format(CDec(precio), ".00"))
                 lstimporte.Items.Add(Format(CDec(importe), ".00"))
                 lstcantidad.Items.Add(cantidad)
+
+                'Query para instertar productos a la nota
+                Try
+                    cmd.Connection = conn
+                    cmd.CommandText = "INSERT INTO detalle_ventas(codigoventa,codigo,cantidad) VALUES('" & codventa & "','" & codigo & "','" & cantidad & "')"
+                    cmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
+                End Try
+
 
                 If lstdescripcion3.Items.Count = 2 Then
                     lstcantidad3.Items.Clear()
@@ -242,9 +248,15 @@ Public Class pedidos
 
     End Sub
     Private Sub MenuItem4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles removeit.Click
-        cmd.Connection = conn
-        cmd.CommandText = "DELETE FROM pedidos WHERE codigocliente = '" & ComboBox1.SelectedIndex + 1 & "' AND codigoproducto = '" & lstcodigo.Text & "'"
-        cmd.ExecuteNonQuery()
+
+        Try
+            cmd.Connection = conn
+            cmd.CommandText = "DELETE FROM pedidos WHERE codigocliente = '" & ComboBox1.SelectedIndex + 1 & "' AND codigoproducto = '" & lstcodigo.Text & "'"
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
+        End Try
+       
         Dim itseleccionado As Integer
         itseleccionado = lstcantidad.SelectedIndex
         lstcantidad.Items.RemoveAt(itseleccionado)
@@ -257,17 +269,19 @@ Public Class pedidos
         dsped.Clear()
         datapedi.Fill(dsped, "pedidos")
 
-
-
-
     End Sub
 
     Private Sub modifcant_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles modifcant.Click
 
         cantinput = InputBox("Introduce la cantidad deseada de " & vbCrLf & "[ " & lstdescripcion.Text & " ]", "Modificar Cantidad")
-        cmd.Connection = conn
-        cmd.CommandText = "UPDATE pedidos SET cantidad = '" & cantinput & "' WHERE codigocliente ='" & ComboBox1.SelectedIndex + 1 & "' AND codigoproducto ='" & lstcodigo.Text & "'"
-        cmd.ExecuteNonQuery()
+        Try
+            cmd.Connection = conn
+            cmd.CommandText = "UPDATE pedidos SET cantidad = '" & cantinput & "' WHERE codigocliente ='" & ComboBox1.SelectedIndex + 1 & "' AND codigoproducto ='" & lstcodigo.Text & "'"
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
+        End Try
+       
         lstcantidad.Items.Item(lstcantidad.SelectedIndex) = cantinput
         cantinput = 0
         preimporte = Val(lstprecio.Text) * Val(lstcantidad.Text)
@@ -294,11 +308,6 @@ Public Class pedidos
 
 
     End Sub
-
-    Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
-     
-    End Sub
-
     Private Sub MenuItem4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem4.Click
 
         cargarnota(ComboBox1.SelectedIndex + 1)
@@ -310,8 +319,6 @@ Public Class pedidos
         principal.ShowDialog()
         Me.Close()
     End Sub
-
-
     Private Sub txtcantidad_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtcantidad.KeyPress
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -322,14 +329,5 @@ Public Class pedidos
         Else
             e.Handled = True
         End If
-    End Sub
-
-    
-    Private Sub lstdescripcion2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles lstdescripcion2.KeyDown
-
-    End Sub
-
-    Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstprecio3.SelectedIndexChanged
-
     End Sub
 End Class
