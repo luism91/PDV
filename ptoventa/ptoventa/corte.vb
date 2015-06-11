@@ -7,33 +7,26 @@ Imports System.Text
 Imports System.IO.Ports
 
 Public Class corte
-    Dim cmd As New SqlCeCommand
-    Dim conn As New SqlCeConnection("Data Source=\Program Files\ptoventa\ptoventa.sdf")
-    Dim dataprod As New SqlCeDataAdapter("SELECT * FROM ventas", conn)
-    Dim dscorte As New DataSet
-    Dim tventas As New DataTable
-    Dim tablaquery As New DataView
-    Dim fila, i As Integer
+
+    Dim fila, i, elementos As Integer
     Dim total As Decimal
     Dim currentDate As DateTime = DateTime.Now
     Dim dateString As String = "dd-MM-yyyy"
     Dim DataString As StringBuilder
 
- 
-
     Private Sub corte_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.ClientesTableAdapter1.Fill(Me.PtoventaDataSet.clientes)
-        conn.Open()
-        dataprod.Fill(dscorte, "ventas")
-        tventas = dscorte.Tables("ventas")
-        tablaquery = tventas.DefaultView
+        'conn.Open()
+        'dataprod.Fill(dscorte, "ventas")
+        'tventas = dscorte.Tables("ventas")
+        'tablaquery = tventas.DefaultView
 
-        lstfecha.DataSource = dscorte.Tables("ventas")
-        lstfecha.DisplayMember = "fechaventa"
-        lstnombrec.DataSource = dscorte.Tables("ventas")
-        lstnombrec.DisplayMember = "nombrecliente"
-        lstimporte.DataSource = dscorte.Tables("ventas")
-        lstimporte.DisplayMember = "importetotal"
+        'lstfecha.DataSource = dscorte.Tables("ventas")
+        'lstfecha.DisplayMember = "fechaventa"
+        'lstnombrec.DataSource = dscorte.Tables("ventas")
+        'lstnombrec.DisplayMember = "nombrecliente"
+        'lstimporte.DataSource = dscorte.Tables("ventas")
+        'lstimporte.DisplayMember = "importetotal"
 
     End Sub
     Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -88,7 +81,7 @@ Public Class corte
 
             fila = 130
 
-            For elementos = 0 To (lstnombrec.Items.Count - 1)
+            For Me.elementos = 0 To (lstnombrec.Items.Count - 1)
                 lstnombrec.SelectedIndex = elementos
                 lstimporte.SelectedIndex = elementos
                 lstfecha.SelectedIndex = elementos
@@ -101,7 +94,7 @@ Public Class corte
                 DataString.Append("" & lstfecha.Text & "" & vbCrLf)
 
                 fila = fila + 28
-            Next elementos
+            Next me.elementos
 
             fila = fila + 40
 
@@ -139,27 +132,27 @@ Public Class corte
 
     Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
 
-        If MsgBox("Deseas liquidar la venta seleccionada del cliente '" & ComboBox1.Text & "' Y dia '" & lstfecha.Text & "' ?", MsgBoxStyle.OkCancel, "Modificacion") = MsgBoxResult.Ok Then
-            cmd.Connection = conn
-            cmd.CommandText = "DELETE FROM ventas WHERE nombrecliente = '" & ComboBox1.Text & "' AND  fechaventa = '" & lstfecha.Text & "'"
-            cmd.ExecuteNonQuery()
-        End If
-        dscorte.Clear()
-        dataprod.Fill(dscorte, "ventas")
-        lbltotal.Text = Nothing
+        'If MsgBox("Deseas liquidar la venta seleccionada del cliente '" & ComboBox1.Text & "' Y dia '" & lstfecha.Text & "' ?", MsgBoxStyle.OkCancel, "Modificacion") = MsgBoxResult.Ok Then
+        '    cmd.Connection = conn
+        '    cmd.CommandText = "DELETE FROM ventas WHERE nombrecliente = '" & ComboBox1.Text & "' AND  fechaventa = '" & lstfecha.Text & "'"
+        '    cmd.ExecuteNonQuery()
+        'End If
+        'dscorte.Clear()
+        'dataprod.Fill(dscorte, "ventas")
+        'lbltotal.Text = Nothing
 
     End Sub
 
     Private Sub MenuItem6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem6.Click
-        If MsgBox("Deseas liquidar la venta del dia '" & DateTimePicker1.Value.ToShortDateString & "' ?", MsgBoxStyle.OkCancel, "Modificacion") = MsgBoxResult.Ok Then
-            cmd.Connection = conn
-            cmd.CommandText = "DELETE FROM ventas WHERE fechaventa = '" & DateTimePicker1.Value.ToShortDateString & "'"
-            cmd.ExecuteNonQuery()
-        End If
-        dscorte.Clear()
-        dataprod.Fill(dscorte, "ventas")
-        lbltotal.Text = Nothing
+        '    If MsgBox("Deseas liquidar la venta del dia '" & DateTimePicker1.Value.ToShortDateString & "' ?", MsgBoxStyle.OkCancel, "Modificacion") = MsgBoxResult.Ok Then
+        '        cmd.Connection = conn
+        '        cmd.CommandText = "DELETE FROM ventas WHERE fechaventa = '" & DateTimePicker1.Value.ToShortDateString & "'"
+        '        cmd.ExecuteNonQuery()
+        '    End If
+        '    dscorte.Clear()
+        '    dataprod.Fill(dscorte, "ventas")
+        '    lbltotal.Text = Nothing
+        'End Sub
+
     End Sub
-
-
 End Class

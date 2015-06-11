@@ -1,75 +1,18 @@
-﻿Imports System.Data.SqlClient
-Imports System.Data.SqlServerCe
-Imports System
-Imports System.Data
+﻿Imports System.Data
 Imports System.Text
-Imports System.IO.Ports
-Imports System.Threading
 
 Public Class ventas
-    Dim precio, cantidad, importe, total, preimporte, cantinput As Decimal
-    Dim i, fila, elementos, rowview, mover As Integer
+
+    Dim elementos, i, rowview As Integer
     Dim desc, codigo, errorimp As String
-    Dim cmd As New SqlCeCommand
-    Dim conn As New SqlCeConnection("Data Source=\Program Files\ptoventa\ptoventa.sdf")
-    Dim dataprod As New SqlCeDataAdapter("SELECT * FROM productos ORDER BY codigo ASC", conn)
-    Dim datapedi As New SqlCeDataAdapter("SELECT * FROM ventas", conn)
+
     Dim tprod As New DataTable
     Dim tped As New DataTable
-    Dim tablaquery As New DataView
-    Dim tablacargas As New DataView
-    Dim dsprod As New DataSet
-    Dim dsped As New DataSet
+
     Dim currentDate As DateTime = DateTime.Now
     Dim dateString As String = "dd-MM-yyyy"
     Dim DataString As StringBuilder
-
-
-    Private Sub ventas_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
-        Dim currentDate As DateTime = DateTime.Now
-        Dim dateString As String = "dd-MM-yyyy"
-        Label5.Text = currentDate.ToString(dateString)
-
-    End Sub
-    Public Function cargarnota(ByVal codigocliente As Integer) As Integer
-
-        lstcantidad.Items.Clear()
-        lstdescripcion.Items.Clear()
-        lstcodigo.Items.Clear()
-        lstprecio.Items.Clear()
-        lstimporte.Items.Clear()
-        dsped.Clear()
-        datapedi.Fill(dsped, "ventas")
-
-        tablacargas.RowFilter = "codigocliente ='" & codigocliente & "'"
-
-        If tablacargas.Count = 0 Then
-            MsgBox("No hay notas pendientes", MsgBoxStyle.OkOnly, "Notas")
-        Else
-
-            For Me.rowview = 0 To tablacargas.Count - 1
-                tablaquery.RowFilter = "codigo = '" & tablacargas.Item(rowview).Row(1).ToString & "'"
-                lstcantidad.Items.Add(tablacargas.Item(rowview).Row(2))
-                lstdescripcion.Items.Add(lstdescripcion2.Text)
-                precio = Val(lstprecio2.Text)
-                importe = Val(lstprecio2.Text) * Val(tablacargas.Item(rowview).Row(2))
-                lstprecio.Items.Add(Format(CDec(precio), ".00"))
-                lstimporte.Items.Add(Format(CDec(importe), ".00"))
-                precio = 0
-                importe = 0
-                lstcodigo.Items.Add(lstcodigo2.Text)
-                tablaquery.RowFilter = Nothing
-
-            Next Me.rowview
-            End If
-
-            tablacargas.RowFilter = Nothing
-            txtbusqueda.Text = ""
-            txtcantidad.Text = ""
-
-    End Function
-
-    Private Function imprimirecibo(ByVal tiporecibo As String) As Integer
+    Public Function imprimirecibo(ByVal tiporecibo As String) As Integer
 
         DataString = New StringBuilder()
 
@@ -132,14 +75,56 @@ Public Class ventas
             SP.Close()
 
         Catch ex As Exception
-            MsgBox("Por favor encienda la impresora o acerquese", MsgBoxStyle.OkOnly)
+            MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, MsgBoxStyle.OkOnly)
         End Try
 
+    End Function
 
+    Private Sub ventas_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
+        Dim currentDate As DateTime = DateTime.Now
+        Dim dateString As String = "dd-MM-yyyy"
+        Label5.Text = currentDate.ToString(dateString)
+    End Sub
+    Public Function cargarnota(ByVal codigocliente As Integer) As Integer
+
+        ComboBox1.Enabled = False
+        lstcantidad.Items.Clear()
+        lstdescripcion.Items.Clear()
+        lstcodigo.Items.Clear()
+        'Filtrar por codigo de cliente y si la nota esta abierta.
+        tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
+
+        If tablacargas.Count = 0 Then
+            MsgBox("No hay notas pendientes", MsgBoxStyle.OkOnly, "Notas")
+        Else
+            codventa = tablacargas(0)("codigoventa")
+            cvCargarNota = codventa
+            poblartablas(2)
+
+            For Me.rowview = 0 To dsdetalleNota.Tables("informacionticket").Rows.Count - 1
+                Dim cantidad As Double
+                cantidad = (CDec(dsdetalleNota.Tables("informacionticket").Rows(rowview)("cantidad").ToString()))
+                lstcantidad.Items.Add(cantidad)
+                lstdescripcion.Items.Add(dsdetalleNota.Tables("informacionticket").Rows(rowview)("descripcion").ToString())
+                lstcodigo.Items.Add(dsdetalleNota.Tables("informacionticket").Rows(rowview)("codigo").ToString())
+                precio = (CDec(dsdetalleNota.Tables("informacionticket").Rows(rowview)("precio").ToString()))
+                importe = precio * (cantidad)
+                lstprecio.Items.Add(Format(CDec(precio), ".00"))
+                lstimporte.Items.Add(Format(CDec(importe), ".00"))
+            Next Me.rowview
+
+            txtbusqueda.Text = ""
+            txtcantidad.Text = ""
+            cantidad = 0
+            precio = 0
+            importe = 0
+
+        End If
 
 
     End Function
 
+  
 
     Private Sub ventas_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
 
@@ -175,7 +160,7 @@ Public Class ventas
                     imprimirecibo("*--COPIA--*")
                 End If
 
-                tablacargas.RowFilter = "codigocliente ='" & ComboBox1.SelectedIndex + 1 & "'"
+
                 If tablacargas.Count > 29 Then
                     For Me.i = 0 To 29
                         tablacargas.Delete(i)
@@ -198,24 +183,20 @@ Public Class ventas
     Private Sub ventas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Me.ClientesTableAdapter1.Fill(Me.PtoventaDataSet.clientes)
-        conn.Open()
+        If conn.State = ConnectionState.Closed Then
+            conn.Open()
+        End If
 
-        dataprod.Fill(dsprod, "productos")
-        datapedi.Fill(dsped, "ventas")
-
-        tprod = dsprod.Tables("productos")
-        tped = dsped.Tables("ventas")
-
-        tablaquery = tprod.DefaultView
-        tablacargas = tped.DefaultView
-
-        lstdescripcion2.DataSource = dsprod.Tables("productos")
+        poblartablas(0)
+        tablaquery.Table = dsprod.Tables("productos2")
+        tablacargas.Table = dsped.Tables("ventas")
+        lstdescripcion2.DataSource = tablaquery
         lstdescripcion2.DisplayMember = "descripcion"
-        lstprecio2.DataSource = dsprod.Tables("productos")
+        lstprecio2.DataSource = tablaquery
         lstprecio2.DisplayMember = "precio"
-        lstcodigo2.DataSource = dsprod.Tables("productos")
+        lstcodigo2.DataSource = tablaquery
         lstcodigo2.DisplayMember = "codigo"
-
+        generarnota = 0
 
     End Sub
     Private Sub txtbusqueda_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtbusqueda.KeyDown

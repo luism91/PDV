@@ -63,6 +63,8 @@ Partial Public Class pedidos
         Me.Label14 = New System.Windows.Forms.Label
         Me.ComboBox2 = New System.Windows.Forms.ComboBox
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox
+        Me.SP = New System.IO.Ports.SerialPort(Me.components)
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -129,7 +131,7 @@ Partial Public Class pedidos
         Me.ComboBox1.DataSource = Me.clientesBindingSource
         Me.ComboBox1.DisplayMember = "nombrecliente"
         Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.ComboBox1.Location = New System.Drawing.Point(55, 1)
+        Me.ComboBox1.Location = New System.Drawing.Point(54, 3)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(168, 19)
         Me.ComboBox1.TabIndex = 3
@@ -168,12 +170,12 @@ Partial Public Class pedidos
         Me.Label3.Location = New System.Drawing.Point(2, 85)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(53, 20)
-        Me.Label3.Text = "Cantidad"
+        Me.Label3.Text = "Cant."
         '
         'txtcantidad
         '
         Me.txtcantidad.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular)
-        Me.txtcantidad.Location = New System.Drawing.Point(61, 85)
+        Me.txtcantidad.Location = New System.Drawing.Point(37, 83)
         Me.txtcantidad.Name = "txtcantidad"
         Me.txtcantidad.Size = New System.Drawing.Size(56, 19)
         Me.txtcantidad.TabIndex = 9
@@ -182,7 +184,7 @@ Partial Public Class pedidos
         'btnagregar
         '
         Me.btnagregar.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.btnagregar.Location = New System.Drawing.Point(123, 84)
+        Me.btnagregar.Location = New System.Drawing.Point(98, 83)
         Me.btnagregar.Name = "btnagregar"
         Me.btnagregar.Size = New System.Drawing.Size(72, 20)
         Me.btnagregar.TabIndex = 10
@@ -192,7 +194,7 @@ Partial Public Class pedidos
         'lstdescripcion
         '
         Me.lstdescripcion.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
-        Me.lstdescripcion.Location = New System.Drawing.Point(30, 183)
+        Me.lstdescripcion.Location = New System.Drawing.Point(30, 182)
         Me.lstdescripcion.Name = "lstdescripcion"
         Me.lstdescripcion.Size = New System.Drawing.Size(127, 387)
         Me.lstdescripcion.TabIndex = 11
@@ -201,7 +203,7 @@ Partial Public Class pedidos
         'lstcantidad
         '
         Me.lstcantidad.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
-        Me.lstcantidad.Location = New System.Drawing.Point(1, 183)
+        Me.lstcantidad.Location = New System.Drawing.Point(1, 182)
         Me.lstcantidad.Name = "lstcantidad"
         Me.lstcantidad.Size = New System.Drawing.Size(26, 387)
         Me.lstcantidad.TabIndex = 12
@@ -236,7 +238,7 @@ Partial Public Class pedidos
         'Label7
         '
         Me.Label7.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label7.Location = New System.Drawing.Point(33, 170)
+        Me.Label7.Location = New System.Drawing.Point(33, 169)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(60, 10)
         Me.Label7.Text = "Descripcion"
@@ -244,7 +246,7 @@ Partial Public Class pedidos
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label6.Location = New System.Drawing.Point(2, 170)
+        Me.Label6.Location = New System.Drawing.Point(2, 169)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(35, 10)
         Me.Label6.Text = "Cant."
@@ -252,7 +254,7 @@ Partial Public Class pedidos
         'lstprecio
         '
         Me.lstprecio.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
-        Me.lstprecio.Location = New System.Drawing.Point(158, 183)
+        Me.lstprecio.Location = New System.Drawing.Point(158, 182)
         Me.lstprecio.Name = "lstprecio"
         Me.lstprecio.Size = New System.Drawing.Size(35, 387)
         Me.lstprecio.TabIndex = 28
@@ -260,7 +262,7 @@ Partial Public Class pedidos
         'lstimporte
         '
         Me.lstimporte.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
-        Me.lstimporte.Location = New System.Drawing.Point(195, 183)
+        Me.lstimporte.Location = New System.Drawing.Point(195, 182)
         Me.lstimporte.Name = "lstimporte"
         Me.lstimporte.Size = New System.Drawing.Size(40, 387)
         Me.lstimporte.TabIndex = 29
@@ -268,7 +270,7 @@ Partial Public Class pedidos
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label4.Location = New System.Drawing.Point(194, 170)
+        Me.Label4.Location = New System.Drawing.Point(194, 169)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(35, 10)
         Me.Label4.Text = "Imp."
@@ -276,7 +278,7 @@ Partial Public Class pedidos
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label5.Location = New System.Drawing.Point(157, 170)
+        Me.Label5.Location = New System.Drawing.Point(157, 169)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(35, 10)
         Me.Label5.Text = "Prec."
@@ -378,7 +380,7 @@ Partial Public Class pedidos
         Me.ComboBox2.DisplayMember = "codigocliente"
         Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown
         Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.ComboBox2.Location = New System.Drawing.Point(4, 1)
+        Me.ComboBox2.Location = New System.Drawing.Point(4, -137)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(46, 19)
         Me.ComboBox2.TabIndex = 62
@@ -388,12 +390,30 @@ Partial Public Class pedidos
         '
         Me.ClientesTableAdapter1.ClearBeforeFill = True
         '
+        'ComboBox3
+        '
+        Me.ComboBox3.DataSource = Me.clientesBindingSource
+        Me.ComboBox3.DisplayMember = "codigocliente"
+        Me.ComboBox3.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.ComboBox3.Location = New System.Drawing.Point(3, 3)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(45, 19)
+        Me.ComboBox3.TabIndex = 90
+        Me.ComboBox3.TabStop = False
+        Me.ComboBox3.ValueMember = "codigocliente"
+        '
+        'SP
+        '
+        Me.SP.BaudRate = 57600
+        Me.SP.PortName = "COM4"
+        '
         'pedidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 268)
+        Me.Controls.Add(Me.ComboBox3)
         Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.lstimp4)
@@ -475,4 +495,6 @@ Partial Public Class pedidos
     Friend WithEvents PtoventaDataSet As ptoventa.ptoventaDataSet
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents ClientesTableAdapter1 As ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
+    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
+    Friend WithEvents SP As System.IO.Ports.SerialPort
 End Class
