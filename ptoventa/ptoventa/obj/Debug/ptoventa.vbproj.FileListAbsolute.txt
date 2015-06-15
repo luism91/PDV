@@ -288,7 +288,6 @@ C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.compras.resources
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.corte.resources
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.modifproductos.resources
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.Resources.resources
-C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.pedidos.resources
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.principal.resources
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.ventas.resources
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.vbproj.GenerateResource.Cache

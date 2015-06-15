@@ -5,11 +5,13 @@ Imports System.Text
 Imports System.IO.Ports
 Imports System.Threading
 Imports System.Data
+Imports System.IO
+
 Module Funciones
 
 
     Public fila, mover, generarnota, codventa, indice, cvCargarNota, i, elementos, optcorte, dia, mes, anio, dia1, mes1, anio1, ccliente As Integer
-    Public desc, uni, codigo As String
+    Public desc, uni, codigo, fecharespaldo As String
     Public importe, precio, cantinput, cantcargar, preimporte, total As Decimal
     Public cantidad As Double
     Public tabladetallesnotas, tablaproductosnota, tablacargas, tablaquery As New DataView
@@ -34,7 +36,7 @@ Module Funciones
             tablaquery.Table = dsprod.Tables("productos2")
             tablacargas.Table = dsped.Tables("ventas")
         ElseIf opt = 1 Then
-          
+
             If optcorte = 1 Then
                 Dim dataCargarVentas As New SqlCeDataAdapter("SELECT c.[codigocliente],c.[nombrecliente],v.[codigoventa],v.[dia]" & _
                   ",v.[mes],v.[anio],v.[importe] FROM clientes AS c " & _
@@ -64,6 +66,16 @@ Module Funciones
 
     End Sub
 
-  
+    Public Sub generarrespaldo()
+
+        fecharespaldo = Date.Today.Day.ToString & Date.Today.Month.ToString & Date.Today.Year.ToString & Date.Today.Millisecond
+        Try
+            File.Copy("\Program Files\ptoventa\ptoventa.sdf", "\Storage Card\ptoventa-" & fecharespaldo & ".sdf", True)
+            MsgBox("Respaldo de base de datos generado", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Respaldos")
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Respaldos")
+        End Try
+
+    End Sub
 
 End Module

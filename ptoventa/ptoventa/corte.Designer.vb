@@ -51,8 +51,8 @@ Partial Public Class corte
         '
         'mainMenu1
         '
-        Me.mainMenu1.MenuItems.Add(Me.MenuItem1)
         Me.mainMenu1.MenuItems.Add(Me.MenuItem2)
+        Me.mainMenu1.MenuItems.Add(Me.MenuItem1)
         '
         'MenuItem1
         '
@@ -62,11 +62,11 @@ Partial Public Class corte
         '
         'MenuItem5
         '
-        Me.MenuItem5.Text = "Imprimir"
+        Me.MenuItem5.Text = "Imprimir corte"
         '
         'MenuItem4
         '
-        Me.MenuItem4.Text = "Menu principal"
+        Me.MenuItem4.Text = "Ir a Menu principal"
         '
         'MenuItem2
         '
@@ -259,7 +259,6 @@ Partial Public Class corte
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem5 As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem4 As System.Windows.Forms.MenuItem
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lbltotal As System.Windows.Forms.Label
     Friend WithEvents SP As System.IO.Ports.SerialPort
@@ -270,4 +269,5 @@ Partial Public Class corte
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents lstcodventa As System.Windows.Forms.ListBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents MenuItem4 As System.Windows.Forms.MenuItem
 End Class

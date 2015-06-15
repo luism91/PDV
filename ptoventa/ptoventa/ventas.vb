@@ -102,6 +102,8 @@ Public Class ventas
 
         If tablacargas.Count = 0 Then
             MsgBox("No hay notas pendientes", MsgBoxStyle.OkOnly, "Notas")
+            ComboBox1.Enabled = True
+            ComboBox1.Focus()
         Else
             codventa = tablacargas(0)("codigoventa")
             cvCargarNota = codventa
@@ -241,8 +243,6 @@ Public Class ventas
             generarnota = 1
             ComboBox1.Enabled = False
         End If
-
-
 
         If lstdescripcion.Items.Count = 34 Then
             MsgBox("No puedes agregar mas productos", MsgBoxStyle.OkOnly, "Limite de productos")
@@ -405,7 +405,7 @@ Public Class ventas
 
     End Sub
 
-    Private Sub MenuItem5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem5.Click
+    Private Sub MenuItem5_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         total = 0
         For Me.i = 0 To (lstimporte.Items.Count - 1)
@@ -450,8 +450,20 @@ Public Class ventas
 
    
 
-    Private Sub MenuItem7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem7.Click
+    Private Sub MenuItem7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
+
+    End Sub
+
+    Private Sub lstdescripcion2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles lstdescripcion2.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+            txtcantidad.Focus()
+        End If
+     
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         lstprecio.Items.Clear()
         lstdescripcion.Items.Clear()
         lstimporte.Items.Clear()
@@ -472,14 +484,67 @@ Public Class ventas
         ComboBox1.Enabled = True
         ComboBox1.SelectedIndex = 0
         ComboBox1.Focus()
-     
+
     End Sub
 
-    Private Sub lstdescripcion2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles lstdescripcion2.KeyDown
+    Private Sub MenuItem5_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem5.Click
+        DataString = New StringBuilder()
 
-        If e.KeyCode = Keys.Enter Then
-            txtcantidad.Focus()
+        If ComboBox1.Enabled = False Then
+            Try
+                If SP.IsOpen = False Then
+                    SP.Open()
+                End If
+
+                DataString.Append("! U1 SETLP 7 3 27" & vbCrLf)
+                DataString.Append("! U1 XY 10 0" & vbCrLf)
+                DataString.Append(ComboBox1.Text & vbCrLf)
+                DataString.Append("! U1 XY 10 40" & vbCrLf)
+                DataString.Append(currentDate.ToString(dateString) & vbCrLf)
+                DataString.Append("! U1 XY 10 80" & vbCrLf)
+                DataString.Append("*--PEDIDO--*" & vbCrLf)
+                DataString.Append("! U1 SETLP 7 0 20" & vbCrLf)
+                DataString.Append("! U1 XY 300 80" & vbCrLf)
+                DataString.Append("Folio:" & vbCrLf)
+                DataString.Append("! U1 XY 380 80" & vbCrLf)
+                DataString.Append(codventa & vbCrLf)
+
+
+                DataString.Append("! U1 SETLP 7 0 20" & vbCrLf)
+                DataString.Append("! U1 XY 10 130" & vbCrLf)
+                DataString.Append("Cant." & vbCrLf)
+                DataString.Append("! U1 XY 80 130" & vbCrLf)
+                DataString.Append("Descripcion" & vbCrLf)
+
+                fila = 160
+
+                For Me.elementos = 0 To (lstdescripcion.Items.Count - 1)
+                    lstprecio.SelectedIndex = elementos
+                    lstdescripcion.SelectedIndex = elementos
+                    lstcantidad.SelectedIndex = elementos
+                    lstimporte.SelectedIndex = elementos
+
+                    DataString.Append("! U1 XY 10 " & fila & "" & vbCrLf)
+                    DataString.Append("" & lstcantidad.Text & "" & vbCrLf)
+                    DataString.Append("! U1 XY 80 " & fila & "" & vbCrLf)
+                    DataString.Append("" & lstdescripcion.Text & "" & vbCrLf)
+
+                    fila = fila + 27
+                Next Me.elementos
+
+                DataString.Append("! U1 SETLP 7 3 20" & vbCrLf)
+                DataString.Append("! U1 XY 10 1290" & vbCrLf)
+                DataString.Append("*--FIN DE PEDIDO--*" & vbCrLf)
+                DataString.Append("! U1 XY 10 1310" & vbCrLf)
+                DataString.Append("" & vbCrLf)
+
+                SP.WriteLine(DataString.ToString())
+                System.Threading.Thread.Sleep(2500)
+                SP.Close()
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, MsgBoxStyle.OkOnly)
+            End Try
         End If
-     
     End Sub
 End Class

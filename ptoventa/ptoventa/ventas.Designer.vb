@@ -26,10 +26,8 @@ Partial Public Class ventas
         Me.modifcant = New System.Windows.Forms.MenuItem
         Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.MenuItem2 = New System.Windows.Forms.MenuItem
-        Me.MenuItem5 = New System.Windows.Forms.MenuItem
         Me.MenuItem6 = New System.Windows.Forms.MenuItem
         Me.MenuItem4 = New System.Windows.Forms.MenuItem
-        Me.MenuItem7 = New System.Windows.Forms.MenuItem
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -68,6 +66,8 @@ Partial Public Class ventas
         Me.Label16 = New System.Windows.Forms.Label
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.MenuItem5 = New System.Windows.Forms.MenuItem
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -94,15 +94,10 @@ Partial Public Class ventas
         '
         'MenuItem2
         '
-        Me.MenuItem2.MenuItems.Add(Me.MenuItem5)
         Me.MenuItem2.MenuItems.Add(Me.MenuItem6)
         Me.MenuItem2.MenuItems.Add(Me.MenuItem4)
-        Me.MenuItem2.MenuItems.Add(Me.MenuItem7)
+        Me.MenuItem2.MenuItems.Add(Me.MenuItem5)
         Me.MenuItem2.Text = "Opciones"
-        '
-        'MenuItem5
-        '
-        Me.MenuItem5.Text = "Reimprimir"
         '
         'MenuItem6
         '
@@ -111,10 +106,6 @@ Partial Public Class ventas
         'MenuItem4
         '
         Me.MenuItem4.Text = "Ir a Menu Prin."
-        '
-        'MenuItem7
-        '
-        Me.MenuItem7.Text = "Nueva venta"
         '
         'Label2
         '
@@ -130,7 +121,7 @@ Partial Public Class ventas
         Me.Label3.Location = New System.Drawing.Point(4, 103)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 20)
-        Me.Label3.Text = "Cantidad"
+        Me.Label3.Text = "Cant."
         '
         'clientesBindingSource
         '
@@ -166,7 +157,7 @@ Partial Public Class ventas
         'txtcantidad
         '
         Me.txtcantidad.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular)
-        Me.txtcantidad.Location = New System.Drawing.Point(61, 101)
+        Me.txtcantidad.Location = New System.Drawing.Point(42, 101)
         Me.txtcantidad.Name = "txtcantidad"
         Me.txtcantidad.Size = New System.Drawing.Size(35, 19)
         Me.txtcantidad.TabIndex = 7
@@ -175,9 +166,9 @@ Partial Public Class ventas
         'btnagregar
         '
         Me.btnagregar.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.btnagregar.Location = New System.Drawing.Point(154, 100)
+        Me.btnagregar.Location = New System.Drawing.Point(80, 100)
         Me.btnagregar.Name = "btnagregar"
-        Me.btnagregar.Size = New System.Drawing.Size(68, 20)
+        Me.btnagregar.Size = New System.Drawing.Size(59, 20)
         Me.btnagregar.TabIndex = 8
         Me.btnagregar.TabStop = False
         Me.btnagregar.Text = "&Agregar"
@@ -254,7 +245,7 @@ Partial Public Class ventas
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular)
-        Me.Label5.Location = New System.Drawing.Point(142, 33)
+        Me.Label5.Location = New System.Drawing.Point(154, 100)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 20)
         Me.Label5.Text = "Label5"
@@ -320,11 +311,11 @@ Partial Public Class ventas
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.ComboBox2)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.ComboBox1)
         Me.Panel1.Controls.Add(Me.txtbusqueda)
-        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(231, 58)
@@ -434,6 +425,18 @@ Partial Public Class ventas
         '
         Me.ClientesTableAdapter1.ClearBeforeFill = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(151, 33)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(69, 22)
+        Me.Button1.TabIndex = 60
+        Me.Button1.Text = "Nva.venta"
+        '
+        'MenuItem5
+        '
+        Me.MenuItem5.Text = "Imprimir pedido"
+        '
         'ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -445,6 +448,7 @@ Partial Public Class ventas
         Me.Controls.Add(Me.lstprecio3)
         Me.Controls.Add(Me.lstdescripcion3)
         Me.Controls.Add(Me.lstcantidad3)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label14)
@@ -472,7 +476,7 @@ Partial Public Class ventas
         Me.KeyPreview = True
         Me.Menu = Me.mainMenu1
         Me.Name = "ventas"
-        Me.Text = "Ventas"
+        Me.Text = "Pedidos/Ventas"
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
@@ -499,7 +503,6 @@ Partial Public Class ventas
     Friend WithEvents MenuItem4 As System.Windows.Forms.MenuItem
     Friend WithEvents modifcant As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem5 As System.Windows.Forms.MenuItem
     Friend WithEvents lstcodigo As System.Windows.Forms.ListBox
     Friend WithEvents lstcodigo2 As System.Windows.Forms.ListBox
     Friend WithEvents MenuItem6 As System.Windows.Forms.MenuItem
@@ -509,7 +512,6 @@ Partial Public Class ventas
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents MenuItem7 As System.Windows.Forms.MenuItem
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
@@ -525,4 +527,6 @@ Partial Public Class ventas
     Friend WithEvents clientesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents PtoventaDataSet As ptoventa.ptoventaDataSet
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents MenuItem5 As System.Windows.Forms.MenuItem
 End Class

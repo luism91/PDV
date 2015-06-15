@@ -4,28 +4,23 @@ Imports System
 Imports System.Data
 
 Public Class modifproductos
-    Dim cmd As New SqlCeCommand
-    Dim conn As New SqlCeConnection("Data Source=\Program Files\ptoventa\ptoventa.sdf")
-    Dim dataprod As New SqlCeDataAdapter("SELECT * FROM productos", conn)
-    Dim dsprod As New DataSet
+
     Dim tprod As New DataTable
-    Dim tablaquery As New DataView
 
 
     Private Sub modifproductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        conn.Open()
+        If conn.State = ConnectionState.Closed Then
+            conn.Open()
+        End If
+
         poblartablas(0, 0)
-
-        tprod = dsprod.Tables("productos2")
-        tablaquery = tprod.DefaultView
-
-        lstcodigo.DataSource = dsprod.Tables("productos")
-        lstcodigo.DisplayMember = "codigo"
-        lstdescripcion.DataSource = dsprod.Tables("productos")
+        lstdescripcion.DataSource = tablaquery
         lstdescripcion.DisplayMember = "descripcion"
-        lstprecio.DataSource = dsprod.Tables("productos")
+        lstprecio.DataSource = tablaquery
         lstprecio.DisplayMember = "precio"
+        lstcodigo.DataSource = tablaquery
+        lstcodigo.DisplayMember = "codigo"
 
     End Sub
 
@@ -51,6 +46,7 @@ Public Class modifproductos
             cmd.CommandText = "UPDATE productos SET descripcion = '" & UCase(txtdescripcion.Text) & "', precio='" & Val(txtprecio.Text) & "' WHERE codigo ='" & txtcodigo.Text & "'"
             cmd.ExecuteNonQuery()
             MsgBox("Producto modificado con exito", MsgBoxStyle.OkOnly, "Modificar Productos")
+            poblartablas(0, 0)
         Catch ex As SqlCeException
             MsgBox(ex.ToString, MsgBoxStyle.OkOnly, "Error")
         End Try
@@ -71,20 +67,18 @@ Public Class modifproductos
                 cmd.Connection = conn
                 cmd.CommandText = "DELETE FROM productos WHERE codigo = '" & lstcodigo.Text & "' "
                 cmd.ExecuteNonQuery()
+                poblartablas(0, 0)
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly)
             End Try
 
         End If
 
-        poblartablas(0, 0)
         txtbusqueda.Focus()
         txtbusqueda.Text = ""
 
     End Sub
-
     Private Sub MenuItem7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem7.Click
-
         If MsgBox("Deseas agregar el producto?", MsgBoxStyle.OkCancel, "Productos") = MsgBoxResult.Ok Then
 
             Try
@@ -98,15 +92,11 @@ Public Class modifproductos
                 txtprecio.Text = ""
                 txtbusqueda.Text = ""
                 txtbusqueda.Focus()
+                poblartablas(0, 0)
             Catch excep As SqlCeException
                 MsgBox(excep.Message, MsgBoxStyle.OkOnly, "Error")
             End Try
         End If
-
-        poblartablas(0, 0)
-
-
-     
 
     End Sub
 

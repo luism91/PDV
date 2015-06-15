@@ -23,13 +23,6 @@
         modifproductos.ShowDialog()
         Me.Close()
     End Sub
-
-    Private Sub btnpedidos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnpedidos.Click
-        Dim pedidos As New pedidos
-        pedidos.ShowDialog()
-        Me.Close()
-    End Sub
-
     Private Sub principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Label1.Text = Date.Today
     End Sub
@@ -44,5 +37,9 @@
         Dim Clientes As New Clientes
         Clientes.ShowDialog()
         Me.Close()
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        generarrespaldo()
     End Sub
 End Class

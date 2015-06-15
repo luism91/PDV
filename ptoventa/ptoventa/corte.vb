@@ -5,37 +5,17 @@ Imports System.Net.Sockets
 Imports System.Data
 Imports System.Text
 Imports System.IO.Ports
-
 Public Class corte
-
-    Dim fila, i, elementos, rowview, dialista, meslista, aniolista As Integer
+    Dim fila, i, elementos, rowview, rowliq, dialista, meslista, aniolista As Integer
     Dim total As Decimal
     Dim currentDate As DateTime = DateTime.Now
     Dim dateString As String = "dd-MM-yyyy"
     Dim DataString As StringBuilder
-
     Private Sub corte_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.ClientesTableAdapter1.Fill(Me.PtoventaDataSet.clientes)
         If conn.State = ConnectionState.Closed Then
             conn.Open()
         End If
-
-        'dataprod.Fill(dscorte, "ventas")
-        'tventas = dscorte.Tables("ventas")
-        'tablaquery = tventas.DefaultView
-
-        'lstfecha.DataSource = dscorte.Tables("ventas")
-        'lstfecha.DisplayMember = "fechaventa"
-        'lstnombrec.DataSource = dscorte.Tables("ventas")
-        'lstnombrec.DisplayMember = "nombrecliente"
-        'lstimporte.DataSource = dscorte.Tables("ventas")
-        'lstimporte.DisplayMember = "importetotal"
-
-
-     
-
-
-
     End Sub
     Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         total = 0
@@ -109,7 +89,6 @@ Public Class corte
             DataString.Append("Importe" & vbCrLf)
             DataString.Append("! U1 XY 460 100" & vbCrLf)
             DataString.Append("Fecha" & vbCrLf)
-
             fila = 130
 
             For Me.elementos = 0 To (lstnombrec.Items.Count - 1)
@@ -117,7 +96,6 @@ Public Class corte
                 lstimporte.SelectedIndex = elementos
                 lstfecha.SelectedIndex = elementos
                 lstcodventa.SelectedIndex = elementos
-
                 DataString.Append("! U1 XY 10 " & fila & "" & vbCrLf)
                 DataString.Append("" & lstcodventa.Text & "" & vbCrLf)
                 DataString.Append("! U1 XY 70 " & fila & "" & vbCrLf)
@@ -127,11 +105,9 @@ Public Class corte
                 DataString.Append("! U1 XY 460 " & fila & "" & vbCrLf)
                 DataString.Append("" & lstfecha.Text & "" & vbCrLf)
                 fila = fila + 28
-
-            Next me.elementos
+            Next Me.elementos
 
             fila = fila + 40
-
             DataString.Append("! U1 SETLP 7 4 27" & vbCrLf)
             DataString.Append("! U1 XY 10 " & fila & "" & vbCrLf)
             DataString.Append(" Total: " & "$" & (Format(CDec(total), ".00")) & "" & vbCrLf)
@@ -142,45 +118,37 @@ Public Class corte
             fila = fila + 50
             DataString.Append("! U1 XY 10 " & fila & "" & vbCrLf)
             DataString.Append(" ")
-
             SP.WriteLine(DataString.ToString())
             System.Threading.Thread.Sleep(2500)
             SP.Close()
-
-
         Catch ex As Exception
             MsgBox("Por favor encienda la impresora o acerquese", MsgBoxStyle.OkOnly, "Error")
         End Try
-
 
         total = 0
 
     End Sub
 
-    Private Sub MenuItem4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem4.Click
-        Dim principal As New principal
-        principal.ShowDialog()
-        Me.Close()
-    End Sub
-
     Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
 
-        If MsgBox("Deseas liquidar las ventas seleccionadas?", MsgBoxStyle.Information + MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
-            For Me.rowview = 0 To lstcodventa.Items.Count - 1
-                lstcodventa.SelectedIndex = rowview
-                Try
+        If MsgBox("Deseas liquidar las ventas en la lista?", MsgBoxStyle.Information + MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
+            Try
+                For Me.rowliq = 0 To (lstcodventa.Items.Count - 1)
+                    lstcodventa.SelectedIndex = rowliq
                     cmd.Connection = conn
                     cmd.CommandText = "DELETE FROM ventas WHERE codigoventa= '" & lstcodventa.Text & "'"
                     cmd.ExecuteNonQuery()
-                Catch ex As Exception
-                    MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
-                End Try
-            Next Me.rowview
+                    lbltotal.Text = Nothing
+                Next Me.rowliq
+                lstnombrec.Items.Clear()
+                lstfecha.Items.Clear()
+                lstimporte.Items.Clear()
+                lstcodventa.Items.Clear()
+                poblartablas(1, 1)
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+            End Try
         End If
-
-        poblartablas(1, 1)
-        lbltotal.Text = Nothing
-
     End Sub
     Private Sub lstcodventa_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstcodventa.SelectedIndexChanged
         lstnombrec.SelectedIndex = lstcodventa.SelectedIndex
@@ -201,5 +169,11 @@ Public Class corte
         lstcodventa.SelectedIndex = lstimporte.SelectedIndex
         lstnombrec.SelectedIndex = lstimporte.SelectedIndex
         lstfecha.SelectedIndex = lstimporte.SelectedIndex
+    End Sub
+
+    Private Sub MenuItem4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem4.Click
+        Dim principal As New principal
+        principal.ShowDialog()
+        Me.Close()
     End Sub
 End Class
