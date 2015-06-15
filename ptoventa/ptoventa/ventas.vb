@@ -105,7 +105,7 @@ Public Class ventas
         Else
             codventa = tablacargas(0)("codigoventa")
             cvCargarNota = codventa
-            poblartablas(2)
+            poblartablas(2, 0)
 
             For Me.rowview = 0 To dsdetalleNota.Tables("informacionticket").Rows.Count - 1
                 Dim cantidad As Double
@@ -151,21 +151,20 @@ Public Class ventas
 
         If e.KeyCode = Keys.Tab Then
 
-            If MsgBox("Deseas Realizar la venta?", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
+            If MsgBox("Deseas Realizar la venta?", MsgBoxStyle.OkCancel, "Realizar venta") = MsgBoxResult.Ok Then
                 total = 0
 
                 Try
-                    '               TODO
                     'Query para realizar la venta
-
-                    cmd.Connection = conn
-                    cmd.CommandText = "UPDATE ventas SET venta_finalizada= '1' WHERE codigoventa ='" & codventa & "'"
-                    cmd.ExecuteNonQuery()
 
                     For Me.i = 0 To (lstimporte.Items.Count - 1)
                         lstimporte.SelectedIndex = Me.i
                         total = (total) + (Val(lstimporte.Text))
                     Next Me.i
+
+                    cmd.Connection = conn
+                    cmd.CommandText = "UPDATE ventas SET venta_finalizada= '1',importe='" & total & "' WHERE codigoventa ='" & codventa & "'"
+                    cmd.ExecuteNonQuery()
 
                     lbimporte.Text = Nothing
                     lbimporte.Text = (Format(CDec(total), ".00"))
@@ -191,10 +190,11 @@ Public Class ventas
                     ComboBox1.Enabled = True
                     ComboBox1.SelectedIndex = 0
                     ComboBox1.Focus()
+
                 Catch ex As Exception
                     MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly)
                 End Try
-
+                poblartablas(0, 0)
 
             End If
         End If
@@ -207,7 +207,7 @@ Public Class ventas
             conn.Open()
         End If
 
-        poblartablas(0)
+        poblartablas(0, 0)
         tablaquery.Table = dsprod.Tables("productos2")
         tablacargas.Table = dsped.Tables("ventas")
         lstdescripcion2.DataSource = tablaquery
@@ -253,7 +253,7 @@ Public Class ventas
         Else
             If ComboBox2.SelectedIndex >= 1 And generarnota = 1 Then
 
-                poblartablas(0)
+                poblartablas(0, 0)
                 tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
 
                 If tablacargas.Count = 0 Then
@@ -263,7 +263,7 @@ Public Class ventas
                         cmd.CommandText = "INSERT INTO ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedValue & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
                         cmd.ExecuteNonQuery()
                         generarnota = 0
-                        poblartablas(0)
+                        poblartablas(0, 0)
                         tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
                         codventa = tablacargas(0)("codigoventa")
                     Catch ex As Exception
@@ -374,7 +374,7 @@ Public Class ventas
             cantinput = 0
             preimporte = Val(lstprecio.Text) * Val(lstcantidad.Text)
             lstimporte.Items.Item(lstcantidad.SelectedIndex) = (Format(CDec(preimporte), ".00"))
-            poblartablas(2)
+            poblartablas(2, 0)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
         End Try
@@ -397,7 +397,7 @@ Public Class ventas
             lstimporte.Items.RemoveAt(itseleccionado)
             itseleccionado = 0
             txtbusqueda.Focus()
-            poblartablas(2)
+            poblartablas(2, 0)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
         End Try
@@ -481,32 +481,5 @@ Public Class ventas
             txtcantidad.Focus()
         End If
      
-    End Sub
-
-    Private Sub lstdescripcion2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstdescripcion2.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim a As Integer
-
-        For a = 0 To 33
-            txtbusqueda.Text = "pek"
-            txtcantidad.Text = "5.2"
-            btnagregar_Click(Nothing, Nothing)
-        Next
-    End Sub
-
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim i As Integer
-
-
-        For i = 0 To 34
-            txtbusqueda.Text = "crp"
-            txtcantidad.Text = 2
-            btnagregar_Click(Nothing, Nothing)
-        Next
-
-
     End Sub
 End Class

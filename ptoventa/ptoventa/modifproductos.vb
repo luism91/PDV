@@ -15,7 +15,7 @@ Public Class modifproductos
     Private Sub modifproductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         conn.Open()
-        poblartablas(0)
+        poblartablas(0, 0)
 
         tprod = dsprod.Tables("productos2")
         tablaquery = tprod.DefaultView
@@ -77,7 +77,7 @@ Public Class modifproductos
 
         End If
 
-        poblartablas(0)
+        poblartablas(0, 0)
         txtbusqueda.Focus()
         txtbusqueda.Text = ""
 
@@ -103,7 +103,7 @@ Public Class modifproductos
             End Try
         End If
 
-        poblartablas(0)
+        poblartablas(0, 0)
 
 
      

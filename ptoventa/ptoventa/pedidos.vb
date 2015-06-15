@@ -10,7 +10,7 @@ Public Class pedidos
             conn.Open()
         End If
 
-        poblartablas(0)
+        poblartablas(0, 0)
 
         lstdescripcion2.DataSource = tablaquery
         lstdescripcion2.DisplayMember = "descripcion"
@@ -26,7 +26,7 @@ Public Class pedidos
         lstcantidad.Items.Clear()
         lstdescripcion.Items.Clear()
         lstcodigo.Items.Clear()
-        poblartablas(0)
+        poblartablas(0, 0)
         'Filtrar por codigo de cliente y si la nota esta abierta.
         tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
         If tablacargas.Count = 0 Then
@@ -34,7 +34,7 @@ Public Class pedidos
         Else
             codventa = tablacargas(0)("codigoventa")
             cvCargarNota = codventa
-            poblartablas(2)
+            poblartablas(2, 0)
             For Me.rowview = 0 To dsdetalleNota.Tables("informacionticket").Rows.Count - 1
                 Dim cantidad As Double
                 cantidad = (CDec(dsdetalleNota.Tables("informacionticket").Rows(rowview)("cantidad").ToString()))
@@ -87,7 +87,7 @@ Public Class pedidos
         Else
             If ComboBox2.SelectedIndex >= 1 And generarnota = 1 Then
 
-                poblartablas(0)
+                poblartablas(0, 0)
                 tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
 
                 If tablacargas.Count = 0 Then
@@ -97,7 +97,7 @@ Public Class pedidos
                         cmd.CommandText = "INSERT INTO ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedValue & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
                         cmd.ExecuteNonQuery()
                         generarnota = 0
-                        poblartablas(0)
+                        poblartablas(0, 0)
                         tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
                         codventa = tablacargas(0)("codigoventa")
                     Catch ex As Exception
@@ -264,7 +264,7 @@ Public Class pedidos
             lstimporte.Items.RemoveAt(itseleccionado)
             itseleccionado = 0
             txtbusqueda.Focus()
-            poblartablas(2)
+            poblartablas(2, 0)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
         End Try
@@ -284,7 +284,7 @@ Public Class pedidos
             cantinput = 0
             preimporte = Val(lstprecio.Text) * Val(lstcantidad.Text)
             lstimporte.Items.Item(lstcantidad.SelectedIndex) = (Format(CDec(preimporte), ".00"))
-            poblartablas(2)
+            poblartablas(2, 0)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
         End Try
@@ -332,7 +332,4 @@ Public Class pedidos
         End If
     End Sub
 
-    Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
-
-    End Sub
 End Class
