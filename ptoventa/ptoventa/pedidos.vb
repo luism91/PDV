@@ -65,7 +65,7 @@ Public Class pedidos
     End Sub
 
     Private Sub txtbusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
-        tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
+        tablaquery.RowFilter = ("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'")
     End Sub
 
     Private Sub btnagregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregar.Click
@@ -195,8 +195,6 @@ Public Class pedidos
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
-
 
         'Limpiar para poder agregar una nueva nota
         txtbusqueda.Text = ""

@@ -234,6 +234,7 @@ Partial Public Class pedidos
         Me.lstcodigo.Size = New System.Drawing.Size(101, 41)
         Me.lstcodigo.TabIndex = 24
         Me.lstcodigo.TabStop = False
+        Me.lstcodigo.Visible = False
         '
         'Label7
         '
@@ -394,6 +395,7 @@ Partial Public Class pedidos
         '
         Me.ComboBox3.DataSource = Me.clientesBindingSource
         Me.ComboBox3.DisplayMember = "codigocliente"
+        Me.ComboBox3.Enabled = False
         Me.ComboBox3.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
         Me.ComboBox3.Location = New System.Drawing.Point(3, 3)
         Me.ComboBox3.Name = "ComboBox3"

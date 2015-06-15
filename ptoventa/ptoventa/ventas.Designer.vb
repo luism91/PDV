@@ -33,6 +33,7 @@ Partial Public Class ventas
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
         Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.txtbusqueda = New System.Windows.Forms.TextBox
         Me.txtcantidad = New System.Windows.Forms.TextBox
@@ -54,6 +55,7 @@ Partial Public Class ventas
         Me.Label9 = New System.Windows.Forms.Label
         Me.Label10 = New System.Windows.Forms.Label
         Me.Panel1 = New System.Windows.Forms.Panel
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox
         Me.Label11 = New System.Windows.Forms.Label
         Me.Label12 = New System.Windows.Forms.Label
         Me.Label13 = New System.Windows.Forms.Label
@@ -66,11 +68,9 @@ Partial Public Class ventas
         Me.Label16 = New System.Windows.Forms.Label
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
-        Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'mainMenu1
@@ -136,6 +136,12 @@ Partial Public Class ventas
         '
         Me.clientesBindingSource.DataMember = "clientes"
         Me.clientesBindingSource.DataSource = Me.PtoventaDataSet
+        '
+        'PtoventaDataSet
+        '
+        Me.PtoventaDataSet.DataSetName = "ptoventaDataSet"
+        Me.PtoventaDataSet.Prefix = ""
+        Me.PtoventaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ComboBox1
         '
@@ -323,6 +329,18 @@ Partial Public Class ventas
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(231, 58)
         '
+        'ComboBox2
+        '
+        Me.ComboBox2.DataSource = Me.clientesBindingSource
+        Me.ComboBox2.DisplayMember = "codigocliente"
+        Me.ComboBox2.Enabled = False
+        Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.ComboBox2.Location = New System.Drawing.Point(4, 3)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(46, 19)
+        Me.ComboBox2.TabIndex = 8
+        Me.ComboBox2.ValueMember = "codigocliente"
+        '
         'Label11
         '
         Me.Label11.BackColor = System.Drawing.Color.Black
@@ -416,23 +434,6 @@ Partial Public Class ventas
         '
         Me.ClientesTableAdapter1.ClearBeforeFill = True
         '
-        'PtoventaDataSet
-        '
-        Me.PtoventaDataSet.DataSetName = "ptoventaDataSet"
-        Me.PtoventaDataSet.Prefix = ""
-        Me.PtoventaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.DataSource = Me.clientesBindingSource
-        Me.ComboBox2.DisplayMember = "codigocliente"
-        Me.ComboBox2.Enabled = False
-        Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.ComboBox2.Location = New System.Drawing.Point(4, 3)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(46, 19)
-        Me.ComboBox2.TabIndex = 8
-        '
         'ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -473,8 +474,8 @@ Partial Public Class ventas
         Me.Name = "ventas"
         Me.Text = "Ventas"
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

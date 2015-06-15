@@ -15,8 +15,9 @@ Public Class modifproductos
     Private Sub modifproductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         conn.Open()
-        dataprod.Fill(dsprod, "productos")
-        tprod = dsprod.Tables("productos")
+        poblartablas(0)
+
+        tprod = dsprod.Tables("productos2")
         tablaquery = tprod.DefaultView
 
         lstcodigo.DataSource = dsprod.Tables("productos")
@@ -47,14 +48,13 @@ Public Class modifproductos
 
         Try
             cmd.Connection = conn
-            cmd.CommandText = "UPDATE productos SET descripcion = '" & txtdescripcion.Text & "', precio='" & Val(txtprecio.Text) & "' WHERE codigo ='" & txtcodigo.Text & "'"
+            cmd.CommandText = "UPDATE productos SET descripcion = '" & UCase(txtdescripcion.Text) & "', precio='" & Val(txtprecio.Text) & "' WHERE codigo ='" & txtcodigo.Text & "'"
             cmd.ExecuteNonQuery()
             MsgBox("Producto modificado con exito", MsgBoxStyle.OkOnly, "Modificar Productos")
         Catch ex As SqlCeException
             MsgBox(ex.ToString, MsgBoxStyle.OkOnly, "Error")
         End Try
-        dsprod.Clear()
-        dataprod.Fill(dsprod, "productos")
+
 
         txtcodigo.Text = ""
         txtdescripcion.Text = ""
@@ -65,14 +65,19 @@ Public Class modifproductos
     End Sub
 
     Private Sub MenuItem5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem5.Click
+
         If MsgBox("Deseas eliminar el producto seleccionado?", MsgBoxStyle.OkCancel, "Modificacion") = MsgBoxResult.Ok Then
-            cmd.Connection = conn
-            cmd.CommandText = "DELETE FROM productos WHERE codigo = '" & lstcodigo.Text & "' "
-            cmd.ExecuteNonQuery()
+            Try
+                cmd.Connection = conn
+                cmd.CommandText = "DELETE FROM productos WHERE codigo = '" & lstcodigo.Text & "' "
+                cmd.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly)
+            End Try
+
         End If
 
-        dsprod.Clear()
-        dataprod.Fill(dsprod, "productos")
+        poblartablas(0)
         txtbusqueda.Focus()
         txtbusqueda.Text = ""
 
@@ -82,32 +87,25 @@ Public Class modifproductos
 
         If MsgBox("Deseas agregar el producto?", MsgBoxStyle.OkCancel, "Productos") = MsgBoxResult.Ok Then
 
-            tablaquery.RowFilter = "codigo ='" & txtcodigo.Text & "'"
-            If tablaquery.Count > 0 Then
-                MsgBox("El codigo insertado esta duplicado", MsgBoxStyle.OkOnly, "Error")
-                tablaquery.RowFilter = Nothing
-                txtcodigo.Focus()
-            Else
-                tablaquery.RowFilter = Nothing
-                Try
-                    cmd.Connection = conn
-                    cmd.CommandText = "INSERT INTO productos(codigo,descripcion,precio) VALUES('" & txtcodigo.Text & "','" & txtdescripcion.Text & "','" & Val(txtprecio.Text) & "')"
-                    cmd.ExecuteNonQuery()
-                    MsgBox("Producto agregado con exito", MsgBoxStyle.OkOnly, "Modificar Productos")
-                    txtcodigo.Text = ""
-                    txtcodigo.Enabled = False
-                    txtdescripcion.Text = ""
-                    txtprecio.Text = ""
-                    txtbusqueda.Text = ""
-                    txtbusqueda.Focus()
-                Catch excep As SqlCeException
-                    MsgBox(excep.Message, MsgBoxStyle.OkOnly, "Error")
-                End Try
-            End If
-            dsprod.Clear()
-            dataprod.Fill(dsprod, "productos")
-
+            Try
+                cmd.Connection = conn
+                cmd.CommandText = "INSERT INTO productos(codigo,descripcion,precio) VALUES('" & txtcodigo.Text & "','" & UCase(txtdescripcion.Text) & "','" & Val(txtprecio.Text) & "')"
+                cmd.ExecuteNonQuery()
+                MsgBox("Producto agregado con exito", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Modificar Productos")
+                txtcodigo.Text = ""
+                txtcodigo.Enabled = False
+                txtdescripcion.Text = ""
+                txtprecio.Text = ""
+                txtbusqueda.Text = ""
+                txtbusqueda.Focus()
+            Catch excep As SqlCeException
+                MsgBox(excep.Message, MsgBoxStyle.OkOnly, "Error")
+            End Try
         End If
+
+        poblartablas(0)
+
+
      
 
     End Sub
@@ -143,9 +141,5 @@ Public Class modifproductos
         Else
             e.Handled = True
         End If
-    End Sub
-
-    Private Sub txtprecio_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtprecio.TextChanged
-
     End Sub
 End Class
