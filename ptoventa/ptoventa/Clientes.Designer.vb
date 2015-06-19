@@ -21,6 +21,12 @@ Partial Public Class clientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.mainMenu1 = New System.Windows.Forms.MainMenu
+        Me.MenuItem1 = New System.Windows.Forms.MenuItem
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
+        Me.MenuItem4 = New System.Windows.Forms.MenuItem
+        Me.MenuItem5 = New System.Windows.Forms.MenuItem
+        Me.MenuItem6 = New System.Windows.Forms.MenuItem
+        Me.MenuItem2 = New System.Windows.Forms.MenuItem
         Me.Label1 = New System.Windows.Forms.Label
         Me.txtbusqueda = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
@@ -36,18 +42,40 @@ Partial Public Class clientes
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
-        Me.MenuItem1 = New System.Windows.Forms.MenuItem
-        Me.MenuItem2 = New System.Windows.Forms.MenuItem
-        Me.MenuItem3 = New System.Windows.Forms.MenuItem
-        Me.MenuItem4 = New System.Windows.Forms.MenuItem
-        Me.MenuItem5 = New System.Windows.Forms.MenuItem
-        Me.MenuItem6 = New System.Windows.Forms.MenuItem
         Me.SuspendLayout()
         '
         'mainMenu1
         '
         Me.mainMenu1.MenuItems.Add(Me.MenuItem1)
         Me.mainMenu1.MenuItems.Add(Me.MenuItem2)
+        '
+        'MenuItem1
+        '
+        Me.MenuItem1.MenuItems.Add(Me.MenuItem3)
+        Me.MenuItem1.MenuItems.Add(Me.MenuItem4)
+        Me.MenuItem1.Text = "Opciones"
+        '
+        'MenuItem3
+        '
+        Me.MenuItem3.Text = "Eliminar Cliente"
+        '
+        'MenuItem4
+        '
+        Me.MenuItem4.MenuItems.Add(Me.MenuItem5)
+        Me.MenuItem4.MenuItems.Add(Me.MenuItem6)
+        Me.MenuItem4.Text = "Cliente Nuevo"
+        '
+        'MenuItem5
+        '
+        Me.MenuItem5.Text = "1 - Agregar"
+        '
+        'MenuItem6
+        '
+        Me.MenuItem6.Text = "2 - Guardar"
+        '
+        'MenuItem2
+        '
+        Me.MenuItem2.Text = "Menú Principal"
         '
         'Label1
         '
@@ -178,34 +206,6 @@ Partial Public Class clientes
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(240, 5)
         Me.Label4.Text = "Label4"
-        '
-        'MenuItem1
-        '
-        Me.MenuItem1.MenuItems.Add(Me.MenuItem3)
-        Me.MenuItem1.MenuItems.Add(Me.MenuItem4)
-        Me.MenuItem1.Text = "Opciones"
-        '
-        'MenuItem2
-        '
-        Me.MenuItem2.Text = "Menú Principal"
-        '
-        'MenuItem3
-        '
-        Me.MenuItem3.Text = "Eliminar Cliente"
-        '
-        'MenuItem4
-        '
-        Me.MenuItem4.MenuItems.Add(Me.MenuItem5)
-        Me.MenuItem4.MenuItems.Add(Me.MenuItem6)
-        Me.MenuItem4.Text = "Cliente Nuevo"
-        '
-        'MenuItem5
-        '
-        Me.MenuItem5.Text = "1 - Agregar"
-        '
-        'MenuItem6
-        '
-        Me.MenuItem6.Text = "2 - Guardar"
         '
         'clientes
         '

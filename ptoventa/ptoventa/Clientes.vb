@@ -83,4 +83,10 @@ Public Class clientes
             End Try
         End If
     End Sub
+
+    Private Sub MenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem2.Click
+        Dim principal As New principal
+        principal.ShowDialog()
+        Me.Close()
+    End Sub
 End Class
