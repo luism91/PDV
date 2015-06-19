@@ -14,7 +14,7 @@ Public Class modifproductos
             conn.Open()
         End If
 
-        poblartablas(0, 0)
+        poblartablas(3, 0)
         lstdescripcion.DataSource = tablaquery
         lstdescripcion.DisplayMember = "descripcion"
         lstprecio.DataSource = tablaquery
@@ -46,7 +46,7 @@ Public Class modifproductos
             cmd.CommandText = "UPDATE productos SET descripcion = '" & UCase(txtdescripcion.Text) & "', precio='" & Val(txtprecio.Text) & "' WHERE codigo ='" & txtcodigo.Text & "'"
             cmd.ExecuteNonQuery()
             MsgBox("Producto modificado con exito", MsgBoxStyle.OkOnly, "Modificar Productos")
-            poblartablas(0, 0)
+            poblartablas(3, 0)
         Catch ex As SqlCeException
             MsgBox(ex.ToString, MsgBoxStyle.OkOnly, "Error")
         End Try
@@ -67,7 +67,7 @@ Public Class modifproductos
                 cmd.Connection = conn
                 cmd.CommandText = "DELETE FROM productos WHERE codigo = '" & lstcodigo.Text & "' "
                 cmd.ExecuteNonQuery()
-                poblartablas(0, 0)
+                poblartablas(3, 0)
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly)
             End Try
@@ -92,7 +92,7 @@ Public Class modifproductos
                 txtprecio.Text = ""
                 txtbusqueda.Text = ""
                 txtbusqueda.Focus()
-                poblartablas(0, 0)
+                poblartablas(3, 0)
             Catch excep As SqlCeException
                 MsgBox(excep.Message, MsgBoxStyle.OkOnly, "Error")
             End Try

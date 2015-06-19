@@ -1,0 +1,6 @@
+						LISTO
+nueva venta hasta cerrar			X
+agregar productos lento
+no orden alfabetico
+eliminar/modificar clientes
+tamaño ticket

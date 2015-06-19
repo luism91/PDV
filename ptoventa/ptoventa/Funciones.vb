@@ -27,16 +27,15 @@ Module Funciones
     'Codigo para cargar notas existentes
 
     Public Sub poblartablas(ByVal opt As Integer, ByVal optcorte As Integer)
-
         If opt = 0 Then
-            dsprod.Clear()
-            dsped.Clear()
-            dataprod.Fill(dsprod, "productos2")
-            datapedi.Fill(dsped, "ventas")
-            tablaquery.Table = dsprod.Tables("productos2")
-            tablacargas.Table = dsped.Tables("ventas")
+            Try
+                dsped.Clear()
+                datapedi.Fill(dsped, "ventas")
+                tablacargas.Table = dsped.Tables("ventas")
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "Error")
+            End Try
         ElseIf opt = 1 Then
-
             If optcorte = 1 Then
                 Dim dataCargarVentas As New SqlCeDataAdapter("SELECT c.[codigocliente],c.[nombrecliente],v.[codigoventa],v.[dia]" & _
                   ",v.[mes],v.[anio],v.[importe] FROM clientes AS c " & _
@@ -50,20 +49,25 @@ Module Funciones
                 dataCargarVentas.Fill(dscorte, "corte")
 
             End If
-
         ElseIf opt = 2 Then
             Try
                 Dim dataCargarDetalleNota As New SqlCeDataAdapter("SELECT p.[descripcion],p.[precio],d.[codigo],d.[codigoventa],d.[cantidad] FROM productos AS P " & _
                "INNER JOIN [detalle_ventas] AS d ON p.[codigo] = d.[codigo] " & _
-               "WHERE d.[codigoventa]='" & cvCargarNota & "' " & _
-               "ORDER BY p.[codigo]", conn)
+               "WHERE d.[codigoventa]='" & cvCargarNota & "' ", conn)
                 dsdetalleNota.Clear()
                 dataCargarDetalleNota.Fill(dsdetalleNota, "informacionticket")
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
             End Try
+        ElseIf opt = 3 Then
+            Try
+                dsprod.Clear()
+                dataprod.Fill(dsprod, "productos2")
+                tablaquery.Table = dsprod.Tables("productos2")
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "Error")
+            End Try
         End If
-
     End Sub
 
     Public Sub generarrespaldo()

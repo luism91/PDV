@@ -28,6 +28,7 @@ Partial Public Class ventas
         Me.MenuItem2 = New System.Windows.Forms.MenuItem
         Me.MenuItem6 = New System.Windows.Forms.MenuItem
         Me.MenuItem4 = New System.Windows.Forms.MenuItem
+        Me.MenuItem5 = New System.Windows.Forms.MenuItem
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -53,6 +54,7 @@ Partial Public Class ventas
         Me.Label9 = New System.Windows.Forms.Label
         Me.Label10 = New System.Windows.Forms.Label
         Me.Panel1 = New System.Windows.Forms.Panel
+        Me.Button1 = New System.Windows.Forms.Button
         Me.ComboBox2 = New System.Windows.Forms.ComboBox
         Me.Label11 = New System.Windows.Forms.Label
         Me.Label12 = New System.Windows.Forms.Label
@@ -66,8 +68,8 @@ Partial Public Class ventas
         Me.Label16 = New System.Windows.Forms.Label
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.MenuItem5 = New System.Windows.Forms.MenuItem
+        Me.MenuItem7 = New System.Windows.Forms.MenuItem
+        Me.lblcantidad = New System.Windows.Forms.Label
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -95,8 +97,9 @@ Partial Public Class ventas
         'MenuItem2
         '
         Me.MenuItem2.MenuItems.Add(Me.MenuItem6)
-        Me.MenuItem2.MenuItems.Add(Me.MenuItem4)
         Me.MenuItem2.MenuItems.Add(Me.MenuItem5)
+        Me.MenuItem2.MenuItems.Add(Me.MenuItem7)
+        Me.MenuItem2.MenuItems.Add(Me.MenuItem4)
         Me.MenuItem2.Text = "Opciones"
         '
         'MenuItem6
@@ -106,6 +109,10 @@ Partial Public Class ventas
         'MenuItem4
         '
         Me.MenuItem4.Text = "Ir a Menu Prin."
+        '
+        'MenuItem5
+        '
+        Me.MenuItem5.Text = "Imprimir pedido"
         '
         'Label2
         '
@@ -166,7 +173,7 @@ Partial Public Class ventas
         'btnagregar
         '
         Me.btnagregar.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.btnagregar.Location = New System.Drawing.Point(80, 100)
+        Me.btnagregar.Location = New System.Drawing.Point(84, 100)
         Me.btnagregar.Name = "btnagregar"
         Me.btnagregar.Size = New System.Drawing.Size(59, 20)
         Me.btnagregar.TabIndex = 8
@@ -320,6 +327,14 @@ Partial Public Class ventas
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(231, 58)
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(151, 33)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(69, 22)
+        Me.Button1.TabIndex = 60
+        Me.Button1.Text = "Nva.venta"
+        '
         'ComboBox2
         '
         Me.ComboBox2.DataSource = Me.clientesBindingSource
@@ -411,7 +426,7 @@ Partial Public Class ventas
         '
         Me.Label16.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
         Me.Label16.ForeColor = System.Drawing.Color.Red
-        Me.Label16.Location = New System.Drawing.Point(47, 132)
+        Me.Label16.Location = New System.Drawing.Point(3, 132)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(154, 12)
         Me.Label16.Text = "Ultimos Productos agregados"
@@ -425,17 +440,17 @@ Partial Public Class ventas
         '
         Me.ClientesTableAdapter1.ClearBeforeFill = True
         '
-        'Button1
+        'MenuItem7
         '
-        Me.Button1.Location = New System.Drawing.Point(151, 33)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(69, 22)
-        Me.Button1.TabIndex = 60
-        Me.Button1.Text = "Nva.venta"
+        Me.MenuItem7.Text = "Cerrar venta"
         '
-        'MenuItem5
+        'lblcantidad
         '
-        Me.MenuItem5.Text = "Imprimir pedido"
+        Me.lblcantidad.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.lblcantidad.ForeColor = System.Drawing.Color.Red
+        Me.lblcantidad.Location = New System.Drawing.Point(174, 131)
+        Me.lblcantidad.Name = "lblcantidad"
+        Me.lblcantidad.Size = New System.Drawing.Size(45, 13)
         '
         'ventas
         '
@@ -443,6 +458,7 @@ Partial Public Class ventas
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 268)
+        Me.Controls.Add(Me.lblcantidad)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.lstimp4)
         Me.Controls.Add(Me.lstprecio3)
@@ -529,4 +545,6 @@ Partial Public Class ventas
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents MenuItem5 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem7 As System.Windows.Forms.MenuItem
+    Friend WithEvents lblcantidad As System.Windows.Forms.Label
 End Class

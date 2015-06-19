@@ -85,7 +85,16 @@ Public Class ventas
         End Try
 
     End Function
+    Public Sub calcimporte()
 
+        For Me.i = 0 To (lstimporte.Items.Count - 1)
+            lstimporte.SelectedIndex = Me.i
+            total = (total) + (Val(lstimporte.Text))
+        Next Me.i
+        lbimporte.Text = Nothing
+        lbimporte.Text = (Format(CDec(total), ".00"))
+
+    End Sub
     Private Sub ventas_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Activated
         Dim currentDate As DateTime = DateTime.Now
         Dim dateString As String = "dd-MM-yyyy"
@@ -101,7 +110,7 @@ Public Class ventas
         tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
 
         If tablacargas.Count = 0 Then
-            MsgBox("No hay notas pendientes", MsgBoxStyle.OkOnly, "Notas")
+            MsgBox("No hay notas abiertas con este cliente!", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Notas")
             ComboBox1.Enabled = True
             ComboBox1.Focus()
         Else
@@ -122,6 +131,7 @@ Public Class ventas
                 total = total + importe
             Next Me.rowview
 
+            lblcantidad.Text = lstdescripcion.Items.Count
             txtbusqueda.Text = ""
             txtcantidad.Text = ""
             cantidad = 0
@@ -153,50 +163,21 @@ Public Class ventas
 
         If e.KeyCode = Keys.Tab Then
 
-            If MsgBox("Deseas Realizar la venta?", MsgBoxStyle.OkCancel, "Realizar venta") = MsgBoxResult.Ok Then
+            If MsgBox("Desea imprimir el recibo?", MsgBoxStyle.OkCancel, "Realizar venta") = MsgBoxResult.Ok Then
                 total = 0
 
                 Try
-                    'Query para realizar la venta
-
-                    For Me.i = 0 To (lstimporte.Items.Count - 1)
-                        lstimporte.SelectedIndex = Me.i
-                        total = (total) + (Val(lstimporte.Text))
-                    Next Me.i
-
-                    cmd.Connection = conn
-                    cmd.CommandText = "UPDATE ventas SET venta_finalizada= '1',importe='" & total & "' WHERE codigoventa ='" & codventa & "'"
-                    cmd.ExecuteNonQuery()
-
-                    lbimporte.Text = Nothing
-                    lbimporte.Text = (Format(CDec(total), ".00"))
-
+                    calcimporte()
                     imprimirecibo("*--ORIGINAL--*")
 
                     If MsgBox("Oprime YES para imprimir la COPIA", MsgBoxStyle.YesNo, "Impresion") = MsgBoxResult.Yes Then
                         imprimirecibo("*--COPIA--*")
                     End If
 
-                    lstdescripcion.Items.Clear()
-                    lstcodigo.Items.Clear()
-                    lstprecio.Items.Clear()
-                    lstimporte.Items.Clear()
-                    lstcantidad.Items.Clear()
-                    txtbusqueda.Text = ""
-                    txtcantidad.Text = ""
-                    txtbusqueda.Focus()
-                    lstcantidad3.Items.Clear()
-                    lstdescripcion3.Items.Clear()
-                    lstprecio3.Items.Clear()
-                    lstimp4.Items.Clear()
-                    ComboBox1.Enabled = True
-                    ComboBox1.SelectedIndex = 0
-                    ComboBox1.Focus()
-
                 Catch ex As Exception
                     MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly)
                 End Try
-                poblartablas(0, 0)
+
 
             End If
         End If
@@ -210,8 +191,7 @@ Public Class ventas
         End If
 
         poblartablas(0, 0)
-        tablaquery.Table = dsprod.Tables("productos2")
-        tablacargas.Table = dsped.Tables("ventas")
+        poblartablas(3, 0)
         lstdescripcion2.DataSource = tablaquery
         lstdescripcion2.DisplayMember = "descripcion"
         lstprecio2.DataSource = tablaquery
@@ -231,7 +211,6 @@ Public Class ventas
         End If
 
     End Sub
-
     Private Sub txtbusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
         tablaquery.RowFilter = ("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'")
     End Sub
@@ -273,6 +252,7 @@ Public Class ventas
                     MsgBox("Ya hay una nota abierta con este cliente!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly)
                     generarnota = 0
                     cargarnota(ComboBox2.SelectedValue)
+                    txtbusqueda.Focus()
                     Exit Sub
                 End If
             End If
@@ -286,6 +266,7 @@ Public Class ventas
                         cantidad = 0
                         txtcantidad.Text = 0
                     End If
+
                     desc = lstdescripcion2.Text
                     precio = Val(lstprecio2.Text)
                     codigo = lstcodigo2.Text
@@ -300,6 +281,7 @@ Public Class ventas
                     lstprecio.Items.Add(Format(CDec(precio), ".00"))
                     lstimporte.Items.Add(Format(CDec(importe), ".00"))
                     lstcantidad.Items.Add(cantidad)
+                    lblcantidad.Text = lstdescripcion.Items.Count
 
                     If lstdescripcion3.Items.Count = 2 Then
                         lstcantidad3.Items.Clear()
@@ -469,12 +451,11 @@ Public Class ventas
         lstimporte.Items.Clear()
         lstcantidad.Items.Clear()
         lstcodigo.Items.Clear()
-
         lstcantidad3.Items.Clear()
         lstdescripcion3.Items.Clear()
         lstprecio3.Items.Clear()
         lstimp4.Items.Clear()
-
+        lblcantidad.Text = ""
         precio = 0
         importe = 0
         preimporte = 0
@@ -546,5 +527,42 @@ Public Class ventas
                 MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, MsgBoxStyle.OkOnly)
             End Try
         End If
+    End Sub
+
+    Private Sub MenuItem7_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem7.Click
+        Try
+            If lstdescripcion.Items.Count > 1 Then
+                calcimporte()
+                cmd.Connection = conn
+                cmd.CommandText = "UPDATE ventas SET venta_finalizada= '1',importe='" & total & "' WHERE codigoventa ='" & codventa & "'"
+                cmd.ExecuteNonQuery()
+                MsgBox("Venta cerrada correctamente con folio: '" & codventa & "'", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Venta cerrada")
+                poblartablas(0, 0)
+                lstdescripcion.Items.Clear()
+                lstcodigo.Items.Clear()
+                lstprecio.Items.Clear()
+                lstimporte.Items.Clear()
+                lstcantidad.Items.Clear()
+                txtbusqueda.Text = ""
+                txtcantidad.Text = ""
+                txtbusqueda.Focus()
+                lstcantidad3.Items.Clear()
+                lstdescripcion3.Items.Clear()
+                lstprecio3.Items.Clear()
+                lstimp4.Items.Clear()
+                lblcantidad.Text = ""
+                precio = 0
+                importe = 0
+                preimporte = 0
+                total = 0
+                ComboBox1.Enabled = True
+                ComboBox1.SelectedIndex = 0
+                ComboBox1.Focus()
+            ElseIf lstdescripcion.Items.Count = 0 Then
+                MsgBox("La nota está vacía, no se puede cerrar!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Ventas")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+        End Try
     End Sub
 End Class
