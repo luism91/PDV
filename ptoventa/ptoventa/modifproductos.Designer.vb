@@ -31,21 +31,21 @@ Partial Public Class modifproductos
         Me.txtbusqueda = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label6 = New System.Windows.Forms.Label
         Me.lstcodigo = New System.Windows.Forms.ListBox
         Me.lstdescripcion = New System.Windows.Forms.ListBox
-        Me.lstprecio = New System.Windows.Forms.ListBox
-        Me.Label7 = New System.Windows.Forms.Label
         Me.Label8 = New System.Windows.Forms.Label
         Me.Label9 = New System.Windows.Forms.Label
         Me.Label10 = New System.Windows.Forms.Label
         Me.txtcodigo = New System.Windows.Forms.TextBox
         Me.txtdescripcion = New System.Windows.Forms.TextBox
-        Me.txtprecio = New System.Windows.Forms.TextBox
         Me.Button1 = New System.Windows.Forms.Button
         Me.Button2 = New System.Windows.Forms.Button
+        Me.Label7 = New System.Windows.Forms.Label
+        Me.txtprecio = New System.Windows.Forms.TextBox
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.lstprecio = New System.Windows.Forms.ListBox
         Me.SuspendLayout()
         '
         'mainMenu1
@@ -113,14 +113,6 @@ Partial Public Class modifproductos
         Me.Label3.Size = New System.Drawing.Size(66, 10)
         Me.Label3.Text = "Descripcion"
         '
-        'Label4
-        '
-        Me.Label4.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label4.Location = New System.Drawing.Point(198, 43)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(39, 10)
-        Me.Label4.Text = "Precio"
-        '
         'Label5
         '
         Me.Label5.BackColor = System.Drawing.Color.Black
@@ -156,23 +148,6 @@ Partial Public Class modifproductos
         Me.lstdescripcion.Size = New System.Drawing.Size(127, 90)
         Me.lstdescripcion.TabIndex = 13
         Me.lstdescripcion.TabStop = False
-        '
-        'lstprecio
-        '
-        Me.lstprecio.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
-        Me.lstprecio.Location = New System.Drawing.Point(197, 56)
-        Me.lstprecio.Name = "lstprecio"
-        Me.lstprecio.Size = New System.Drawing.Size(40, 90)
-        Me.lstprecio.TabIndex = 14
-        Me.lstprecio.TabStop = False
-        '
-        'Label7
-        '
-        Me.Label7.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label7.Location = New System.Drawing.Point(3, 219)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(39, 13)
-        Me.Label7.Text = "Precio"
         '
         'Label8
         '
@@ -217,15 +192,6 @@ Partial Public Class modifproductos
         Me.txtdescripcion.TabIndex = 23
         Me.txtdescripcion.TabStop = False
         '
-        'txtprecio
-        '
-        Me.txtprecio.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
-        Me.txtprecio.Location = New System.Drawing.Point(64, 219)
-        Me.txtprecio.Name = "txtprecio"
-        Me.txtprecio.Size = New System.Drawing.Size(51, 18)
-        Me.txtprecio.TabIndex = 24
-        Me.txtprecio.TabStop = False
-        '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
@@ -245,6 +211,40 @@ Partial Public Class modifproductos
         Me.Button2.TabIndex = 26
         Me.Button2.TabStop = False
         Me.Button2.Text = "&Guardar Cambios"
+        '
+        'Label7
+        '
+        Me.Label7.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.Label7.Location = New System.Drawing.Point(3, 219)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(39, 13)
+        Me.Label7.Text = "Precio"
+        '
+        'txtprecio
+        '
+        Me.txtprecio.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
+        Me.txtprecio.Location = New System.Drawing.Point(64, 219)
+        Me.txtprecio.Name = "txtprecio"
+        Me.txtprecio.Size = New System.Drawing.Size(51, 18)
+        Me.txtprecio.TabIndex = 24
+        Me.txtprecio.TabStop = False
+        '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.Label4.Location = New System.Drawing.Point(198, 43)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(39, 10)
+        Me.Label4.Text = "Precio"
+        '
+        'lstprecio
+        '
+        Me.lstprecio.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
+        Me.lstprecio.Location = New System.Drawing.Point(197, 56)
+        Me.lstprecio.Name = "lstprecio"
+        Me.lstprecio.Size = New System.Drawing.Size(40, 90)
+        Me.lstprecio.TabIndex = 14
+        Me.lstprecio.TabStop = False
         '
         'modifproductos
         '
@@ -282,25 +282,25 @@ Partial Public Class modifproductos
     Friend WithEvents txtbusqueda As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents lstcodigo As System.Windows.Forms.ListBox
     Friend WithEvents lstdescripcion As System.Windows.Forms.ListBox
     Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem4 As System.Windows.Forms.MenuItem
-    Friend WithEvents lstprecio As System.Windows.Forms.ListBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents txtcodigo As System.Windows.Forms.TextBox
     Friend WithEvents txtdescripcion As System.Windows.Forms.TextBox
-    Friend WithEvents txtprecio As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents MenuItem2 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem5 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem6 As System.Windows.Forms.MenuItem
     Friend WithEvents MenuItem7 As System.Windows.Forms.MenuItem
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents txtprecio As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lstprecio As System.Windows.Forms.ListBox
 End Class

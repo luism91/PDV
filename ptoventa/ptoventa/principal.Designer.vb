@@ -26,7 +26,6 @@ Partial Public Class principal
         Me.btncorte = New System.Windows.Forms.Button
         Me.Button1 = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
-        Me.btncompras = New System.Windows.Forms.Button
         Me.Button2 = New System.Windows.Forms.Button
         Me.Button3 = New System.Windows.Forms.Button
         Me.SuspendLayout()
@@ -41,7 +40,7 @@ Partial Public Class principal
         '
         'btnventas
         '
-        Me.btnventas.Location = New System.Drawing.Point(25, 100)
+        Me.btnventas.Location = New System.Drawing.Point(25, 117)
         Me.btnventas.Name = "btnventas"
         Me.btnventas.Size = New System.Drawing.Size(190, 27)
         Me.btnventas.TabIndex = 0
@@ -50,7 +49,7 @@ Partial Public Class principal
         '
         'btncorte
         '
-        Me.btncorte.Location = New System.Drawing.Point(25, 133)
+        Me.btncorte.Location = New System.Drawing.Point(25, 157)
         Me.btncorte.Name = "btncorte"
         Me.btncorte.Size = New System.Drawing.Size(190, 27)
         Me.btncorte.TabIndex = 1
@@ -59,7 +58,7 @@ Partial Public Class principal
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(25, 67)
+        Me.Button1.Location = New System.Drawing.Point(25, 76)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(190, 27)
         Me.Button1.TabIndex = 2
@@ -74,15 +73,6 @@ Partial Public Class principal
         Me.Label1.Size = New System.Drawing.Size(190, 17)
         Me.Label1.Text = "Label1"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'btncompras
-        '
-        Me.btncompras.Location = New System.Drawing.Point(25, 166)
-        Me.btncompras.Name = "btncompras"
-        Me.btncompras.Size = New System.Drawing.Size(190, 27)
-        Me.btncompras.TabIndex = 4
-        Me.btncompras.TabStop = False
-        Me.btncompras.Text = "&Compras Cueros"
         '
         'Button2
         '
@@ -109,7 +99,6 @@ Partial Public Class principal
         Me.ClientSize = New System.Drawing.Size(240, 268)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.btncompras)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btncorte)
@@ -125,7 +114,6 @@ Partial Public Class principal
     Friend WithEvents btncorte As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents btncompras As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
 

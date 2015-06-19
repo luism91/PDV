@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Public Class Clientes
+Partial Public Class clientes
     Inherits System.Windows.Forms.Form
 
     'Form invalida a Dispose para limpiar la lista de componentes.
@@ -21,128 +21,238 @@ Partial Public Class Clientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.mainMenu1 = New System.Windows.Forms.MainMenu
-        Me.MenuItem1 = New System.Windows.Forms.MenuItem
-        Me.lstcodigo = New System.Windows.Forms.ListBox
-        Me.lstnombre = New System.Windows.Forms.ListBox
-        Me.Button1 = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
+        Me.txtbusqueda = New System.Windows.Forms.TextBox
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.Button2 = New System.Windows.Forms.Button
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.txtnombre = New System.Windows.Forms.TextBox
+        Me.txtcodigo = New System.Windows.Forms.TextBox
+        Me.Label10 = New System.Windows.Forms.Label
+        Me.Label8 = New System.Windows.Forms.Label
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.lstnombre = New System.Windows.Forms.ListBox
+        Me.lstcodigo = New System.Windows.Forms.ListBox
         Me.Label3 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.MenuItem1 = New System.Windows.Forms.MenuItem
+        Me.MenuItem2 = New System.Windows.Forms.MenuItem
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
+        Me.MenuItem4 = New System.Windows.Forms.MenuItem
+        Me.MenuItem5 = New System.Windows.Forms.MenuItem
+        Me.MenuItem6 = New System.Windows.Forms.MenuItem
         Me.SuspendLayout()
         '
         'mainMenu1
         '
         Me.mainMenu1.MenuItems.Add(Me.MenuItem1)
-        '
-        'MenuItem1
-        '
-        Me.MenuItem1.Text = "Menú Principal"
-        '
-        'lstcodigo
-        '
-        Me.lstcodigo.Location = New System.Drawing.Point(4, 54)
-        Me.lstcodigo.Name = "lstcodigo"
-        Me.lstcodigo.Size = New System.Drawing.Size(31, 156)
-        Me.lstcodigo.TabIndex = 0
-        '
-        'lstnombre
-        '
-        Me.lstnombre.Location = New System.Drawing.Point(40, 54)
-        Me.lstnombre.Name = "lstnombre"
-        Me.lstnombre.Size = New System.Drawing.Size(197, 156)
-        Me.lstnombre.TabIndex = 1
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(156, 243)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(81, 18)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "&Agregar"
+        Me.mainMenu1.MenuItems.Add(Me.MenuItem2)
         '
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(4, 32)
+        Me.Label1.Location = New System.Drawing.Point(5, 4)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(50, 21)
-        Me.Label1.Text = "Código"
+        Me.Label1.Size = New System.Drawing.Size(100, 20)
+        Me.Label1.Text = "Buscar"
         '
-        'Label2
+        'txtbusqueda
         '
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(60, 31)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(50, 20)
-        Me.Label2.Text = "Nombre"
+        Me.txtbusqueda.Location = New System.Drawing.Point(57, 3)
+        Me.txtbusqueda.Name = "txtbusqueda"
+        Me.txtbusqueda.Size = New System.Drawing.Size(100, 21)
+        Me.txtbusqueda.TabIndex = 1
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Black
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(0, 27)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(240, 5)
+        Me.Label5.Text = "Label5"
+        '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Button2.Location = New System.Drawing.Point(118, 240)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(105, 20)
+        Me.Button2.TabIndex = 37
+        Me.Button2.TabStop = False
+        Me.Button2.Text = "&Guardar Cambios"
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Button1.Location = New System.Drawing.Point(17, 240)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(95, 20)
+        Me.Button1.TabIndex = 36
+        Me.Button1.TabStop = False
+        Me.Button1.Text = "&Editar Cliente"
+        '
+        'txtnombre
+        '
+        Me.txtnombre.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
+        Me.txtnombre.Location = New System.Drawing.Point(44, 194)
+        Me.txtnombre.Name = "txtnombre"
+        Me.txtnombre.Size = New System.Drawing.Size(193, 18)
+        Me.txtnombre.TabIndex = 35
+        Me.txtnombre.TabStop = False
+        '
+        'txtcodigo
+        '
+        Me.txtcodigo.Enabled = False
+        Me.txtcodigo.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
+        Me.txtcodigo.Location = New System.Drawing.Point(44, 173)
+        Me.txtcodigo.Name = "txtcodigo"
+        Me.txtcodigo.Size = New System.Drawing.Size(51, 18)
+        Me.txtcodigo.TabIndex = 34
+        Me.txtcodigo.TabStop = False
+        '
+        'Label10
+        '
+        Me.Label10.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Label10.Location = New System.Drawing.Point(43, 150)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(164, 20)
+        Me.Label10.Text = "Cliente a modificar/crear"
+        '
+        'Label8
+        '
+        Me.Label8.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.Label8.Location = New System.Drawing.Point(2, 194)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(66, 13)
+        Me.Label8.Text = "Nombre"
+        '
+        'Label9
+        '
+        Me.Label9.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.Label9.Location = New System.Drawing.Point(2, 178)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(39, 13)
+        Me.Label9.Text = "Codigo"
+        '
+        'lstnombre
+        '
+        Me.lstnombre.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
+        Me.lstnombre.Location = New System.Drawing.Point(34, 48)
+        Me.lstnombre.Name = "lstnombre"
+        Me.lstnombre.Size = New System.Drawing.Size(203, 90)
+        Me.lstnombre.TabIndex = 33
+        Me.lstnombre.TabStop = False
+        '
+        'lstcodigo
+        '
+        Me.lstcodigo.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
+        Me.lstcodigo.Location = New System.Drawing.Point(2, 48)
+        Me.lstcodigo.Name = "lstcodigo"
+        Me.lstcodigo.Size = New System.Drawing.Size(26, 90)
+        Me.lstcodigo.TabIndex = 32
+        Me.lstcodigo.TabStop = False
         '
         'Label3
         '
-        Me.Label3.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(7, 219)
+        Me.Label3.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Location = New System.Drawing.Point(34, 35)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(187, 20)
-        Me.Label3.Text = "Nombre. Nvo. Cliente/Vendedor"
+        Me.Label3.Size = New System.Drawing.Size(66, 10)
+        Me.Label3.Text = "Nombre"
         '
-        'TextBox1
+        'Label2
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
-        Me.TextBox1.Location = New System.Drawing.Point(7, 243)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(141, 18)
-        Me.TextBox1.TabIndex = 7
+        Me.Label2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Location = New System.Drawing.Point(2, 35)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 10)
+        Me.Label2.Text = "Cod."
         '
-        'RadioButton1
+        'Label4
         '
-        Me.RadioButton1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.RadioButton1.Location = New System.Drawing.Point(7, 3)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(83, 20)
-        Me.RadioButton1.TabIndex = 11
-        Me.RadioButton1.Text = "Clientes"
+        Me.Label4.BackColor = System.Drawing.Color.Black
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(0, 143)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(240, 5)
+        Me.Label4.Text = "Label4"
         '
-        'RadioButton2
+        'MenuItem1
         '
-        Me.RadioButton2.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.RadioButton2.Location = New System.Drawing.Point(107, 3)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(106, 20)
-        Me.RadioButton2.TabIndex = 12
-        Me.RadioButton2.Text = "Vend. Cueros"
-        Me.RadioButton2.Visible = False
+        Me.MenuItem1.MenuItems.Add(Me.MenuItem3)
+        Me.MenuItem1.MenuItems.Add(Me.MenuItem4)
+        Me.MenuItem1.Text = "Opciones"
         '
-        'Clientes
+        'MenuItem2
+        '
+        Me.MenuItem2.Text = "Menú Principal"
+        '
+        'MenuItem3
+        '
+        Me.MenuItem3.Text = "Eliminar Cliente"
+        '
+        'MenuItem4
+        '
+        Me.MenuItem4.MenuItems.Add(Me.MenuItem5)
+        Me.MenuItem4.MenuItems.Add(Me.MenuItem6)
+        Me.MenuItem4.Text = "Cliente Nuevo"
+        '
+        'MenuItem5
+        '
+        Me.MenuItem5.Text = "1 - Agregar"
+        '
+        'MenuItem6
+        '
+        Me.MenuItem6.Text = "2 - Guardar"
+        '
+        'clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 268)
-        Me.Controls.Add(Me.RadioButton2)
-        Me.Controls.Add(Me.RadioButton1)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.txtnombre)
+        Me.Controls.Add(Me.txtcodigo)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.lstnombre)
         Me.Controls.Add(Me.lstcodigo)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.txtbusqueda)
+        Me.Controls.Add(Me.Label1)
         Me.Menu = Me.mainMenu1
-        Me.Name = "Clientes"
+        Me.Name = "clientes"
         Me.Text = "Clientes"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
-    Friend WithEvents lstcodigo As System.Windows.Forms.ListBox
-    Friend WithEvents lstnombre As System.Windows.Forms.ListBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtbusqueda As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem2 As System.Windows.Forms.MenuItem
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents txtnombre As System.Windows.Forms.TextBox
+    Friend WithEvents txtcodigo As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lstnombre As System.Windows.Forms.ListBox
+    Friend WithEvents lstcodigo As System.Windows.Forms.ListBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem4 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem5 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem6 As System.Windows.Forms.MenuItem
 End Class

@@ -68,14 +68,15 @@ Public Class modifproductos
                 cmd.CommandText = "DELETE FROM productos WHERE codigo = '" & lstcodigo.Text & "' "
                 cmd.ExecuteNonQuery()
                 poblartablas(3, 0)
+                txtbusqueda.Focus()
+                txtbusqueda.Text = ""
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly)
             End Try
 
         End If
 
-        txtbusqueda.Focus()
-        txtbusqueda.Text = ""
+ 
 
     End Sub
     Private Sub MenuItem7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem7.Click
@@ -115,7 +116,7 @@ Public Class modifproductos
 
     End Sub
 
-    Private Sub txtdescripcion_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtdescripcion.KeyDown
+    Private Sub txtdescripcion_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtdescripcion.KeyDown, txtdescripcion.KeyDown
         If e.KeyCode = Keys.Enter Then
             txtprecio.Focus()
         End If
