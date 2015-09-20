@@ -5,6 +5,10 @@ Imports System.Data
 Public Class modifproductos
     Dim tablaquery As New DataView
     Dim tprod As New DataTable
+    Private Sub modifproductos_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
+        Me.Hide()
+        e.Cancel = True
+    End Sub
     Private Sub modifproductos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         If conn.State = ConnectionState.Closed Then
@@ -169,4 +173,6 @@ Public Class modifproductos
         txtbusqueda.Text = ""
         tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
     End Sub
+
+    
 End Class
