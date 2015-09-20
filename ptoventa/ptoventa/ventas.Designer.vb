@@ -32,8 +32,6 @@ Partial Public Class ventas
         Me.MenuItem4 = New System.Windows.Forms.MenuItem
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
         Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.txtbusqueda = New System.Windows.Forms.TextBox
         Me.txtcantidad = New System.Windows.Forms.TextBox
@@ -68,10 +66,7 @@ Partial Public Class ventas
         Me.lstcantidad3 = New System.Windows.Forms.ListBox
         Me.Label16 = New System.Windows.Forms.Label
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
-        Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
         Me.lblcantidad = New System.Windows.Forms.Label
-        CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -134,21 +129,8 @@ Partial Public Class ventas
         Me.Label3.Size = New System.Drawing.Size(61, 20)
         Me.Label3.Text = "Cant."
         '
-        'clientesBindingSource
-        '
-        Me.clientesBindingSource.DataMember = "clientes"
-        Me.clientesBindingSource.DataSource = Me.PtoventaDataSet
-        '
-        'PtoventaDataSet
-        '
-        Me.PtoventaDataSet.DataSetName = "ptoventaDataSet"
-        Me.PtoventaDataSet.Prefix = ""
-        Me.PtoventaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'ComboBox1
         '
-        Me.ComboBox1.DataSource = Me.clientesBindingSource
-        Me.ComboBox1.DisplayMember = "nombrecliente"
         Me.ComboBox1.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
         Me.ComboBox1.Location = New System.Drawing.Point(57, 3)
         Me.ComboBox1.Name = "ComboBox1"
@@ -341,8 +323,6 @@ Partial Public Class ventas
         '
         'ComboBox2
         '
-        Me.ComboBox2.DataSource = Me.clientesBindingSource
-        Me.ComboBox2.DisplayMember = "codigocliente"
         Me.ComboBox2.Enabled = False
         Me.ComboBox2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
         Me.ComboBox2.Location = New System.Drawing.Point(4, 3)
@@ -440,10 +420,6 @@ Partial Public Class ventas
         Me.SP.BaudRate = 57600
         Me.SP.PortName = "COM4"
         '
-        'ClientesTableAdapter1
-        '
-        Me.ClientesTableAdapter1.ClearBeforeFill = True
-        '
         'lblcantidad
         '
         Me.lblcantidad.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
@@ -493,8 +469,6 @@ Partial Public Class ventas
         Me.Menu = Me.mainMenu1
         Me.Name = "ventas"
         Me.Text = "Pedidos/Ventas"
-        CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -539,9 +513,8 @@ Partial Public Class ventas
     Friend WithEvents lstcantidad3 As System.Windows.Forms.ListBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents SP As System.IO.Ports.SerialPort
-    Friend WithEvents ClientesTableAdapter1 As ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
-    Friend WithEvents clientesBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents PtoventaDataSet As ptoventa.ptoventaDataSet
+
+
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents MenuItem5 As System.Windows.Forms.MenuItem

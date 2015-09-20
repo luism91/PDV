@@ -22,11 +22,11 @@ Partial Public Class corte
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.mainMenu1 = New System.Windows.Forms.MainMenu
+        Me.MenuItem2 = New System.Windows.Forms.MenuItem
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.MenuItem1 = New System.Windows.Forms.MenuItem
         Me.MenuItem5 = New System.Windows.Forms.MenuItem
         Me.MenuItem4 = New System.Windows.Forms.MenuItem
-        Me.MenuItem2 = New System.Windows.Forms.MenuItem
-        Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.RadioButton1 = New System.Windows.Forms.RadioButton
         Me.lstnombrec = New System.Windows.Forms.ListBox
@@ -38,21 +38,25 @@ Partial Public Class corte
         Me.Label2 = New System.Windows.Forms.Label
         Me.lbltotal = New System.Windows.Forms.Label
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
-        Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PtoventaDataSet = New ptoventa.ptoventaDataSet
-        Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker
         Me.Button1 = New System.Windows.Forms.Button
         Me.lstcodventa = New System.Windows.Forms.ListBox
         Me.Label1 = New System.Windows.Forms.Label
-        CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'mainMenu1
         '
         Me.mainMenu1.MenuItems.Add(Me.MenuItem2)
         Me.mainMenu1.MenuItems.Add(Me.MenuItem1)
+        '
+        'MenuItem2
+        '
+        Me.MenuItem2.MenuItems.Add(Me.MenuItem3)
+        Me.MenuItem2.Text = "Saldos"
+        '
+        'MenuItem3
+        '
+        Me.MenuItem3.Text = "Liquidar"
         '
         'MenuItem1
         '
@@ -67,15 +71,6 @@ Partial Public Class corte
         'MenuItem4
         '
         Me.MenuItem4.Text = "Ir a Menu principal"
-        '
-        'MenuItem2
-        '
-        Me.MenuItem2.MenuItems.Add(Me.MenuItem3)
-        Me.MenuItem2.Text = "Saldos"
-        '
-        'MenuItem3
-        '
-        Me.MenuItem3.Text = "Liquidar"
         '
         'DateTimePicker1
         '
@@ -168,21 +163,6 @@ Partial Public Class corte
         Me.SP.BaudRate = 57600
         Me.SP.PortName = "COM4"
         '
-        'clientesBindingSource
-        '
-        Me.clientesBindingSource.DataMember = "clientes"
-        Me.clientesBindingSource.DataSource = Me.PtoventaDataSet
-        '
-        'PtoventaDataSet
-        '
-        Me.PtoventaDataSet.DataSetName = "ptoventaDataSet"
-        Me.PtoventaDataSet.Prefix = ""
-        Me.PtoventaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ClientesTableAdapter1
-        '
-        Me.ClientesTableAdapter1.ClearBeforeFill = True
-        '
         'DateTimePicker2
         '
         Me.DateTimePicker2.CalendarFont = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
@@ -242,8 +222,6 @@ Partial Public Class corte
         Me.Menu = Me.mainMenu1
         Me.Name = "corte"
         Me.Text = "Corte"
-        CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -262,9 +240,6 @@ Partial Public Class corte
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lbltotal As System.Windows.Forms.Label
     Friend WithEvents SP As System.IO.Ports.SerialPort
-    Friend WithEvents clientesBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents PtoventaDataSet As ptoventa.ptoventaDataSet
-    Friend WithEvents ClientesTableAdapter1 As ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
     Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents lstcodventa As System.Windows.Forms.ListBox

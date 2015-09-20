@@ -24,7 +24,6 @@ Public Class modifproductos
         lstcodigo.DisplayMember = "codigo"
 
     End Sub
-
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
         tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
     End Sub

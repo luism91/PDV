@@ -9,15 +9,15 @@ Public Class clientes
         End If
 
         poblartablas(4, 0)
-        lstnombre.DataSource = tablaquery
+        lstnombre.DataSource = tablaclientes
         lstnombre.DisplayMember = "nombrecliente"
-        lstcodigo.DataSource = tablaquery
+        lstcodigo.DataSource = tablaclientes
         lstcodigo.DisplayMember = "codigocliente"
 
     End Sub
 
     Private Sub txtbusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
-        tablaquery.RowFilter = ("nombrecliente LIKE '" & txtbusqueda.Text & "%'")
+        tablaclientes.RowFilter = ("nombrecliente LIKE '" & txtbusqueda.Text & "%'")
     End Sub
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click

@@ -12,7 +12,7 @@ Module Funciones
     Public desc, uni, codigo, fecharespaldo As String
     Public importe, precio, cantinput, cantcargar, preimporte, total As Decimal
     Public cantidad As Double
-    Public tabladetallesnotas, tablaproductosnota, tablacargas, tablaquery As New DataView
+    Public tabladetallesnotas, tablaproductosnota, tablacargas, tablaquery, tablaclientes As New DataView
     Public cmd As New SqlCeCommand
     'Codigo para cargar productos y agregar notas nuevas
     Public conn As New SqlCeConnection("Data Source=\Program Files\ptoventa\ptoventa.sdf")
@@ -69,7 +69,7 @@ Module Funciones
             Try
                 dsclientes.Clear()
                 dataCargarClientes.Fill(dsclientes, "clientes")
-                tablaquery.Table = dsclientes.Tables("clientes")
+                tablaclientes.Table = dsclientes.Tables("clientes")
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "Error")
             End Try

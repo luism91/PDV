@@ -292,7 +292,7 @@ Public Class ventas
     End Sub
     Private Sub ventas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Me.ClientesTableAdapter1.Fill(Me.PtoventaDataSet.clientes)
+        'Me.ClientesTableAdapter1.Fill(Me.PtoventaDataSet.clientes)
         If conn.State = ConnectionState.Closed Then
             conn.Open()
         End If
@@ -305,6 +305,13 @@ Public Class ventas
         lstprecio2.DisplayMember = "precio"
         lstcodigo2.DataSource = tablaquery
         lstcodigo2.DisplayMember = "codigo"
+
+        poblartablas(4, 0)
+        ComboBox2.DataSource = tablaclientes
+        ComboBox2.DisplayMember = "codigocliente"
+        ComboBox1.DataSource = tablaclientes
+        ComboBox1.DisplayMember = "nombrecliente"
+
 
     End Sub
     Private Sub txtbusqueda_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtbusqueda.KeyDown
@@ -319,8 +326,8 @@ Public Class ventas
     End Sub
     Private Sub txtbusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
 
-        tprod.Select("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'", "codigo ASC", DataViewRowState.CurrentRows)
-        'tablaquery.RowFilter = ("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'")
+        '-tprod.Select("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'", "codigo ASC", DataViewRowState.CurrentRows)
+        tablaquery.RowFilter = ("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'")
     End Sub
 
     Private Sub btnagregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregar.Click

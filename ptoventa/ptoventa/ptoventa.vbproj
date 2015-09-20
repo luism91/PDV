@@ -129,11 +129,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ptoventaDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ptoventaDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ventas.Designer.vb">
       <DependentUpon>ventas.vb</DependentUpon>
     </Compile>
@@ -178,19 +173,6 @@
     <Content Include="ptoventa.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ptoventaDataSet.xsc">
-      <DependentUpon>ptoventaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ptoventaDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ptoventaDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ptoventaDataSet.xss">
-      <DependentUpon>ptoventaDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.VisualBasic.targets" />
   <ProjectExtensions>

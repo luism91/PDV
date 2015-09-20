@@ -12,7 +12,7 @@ Public Class corte
     Dim dateString As String = "dd-MM-yyyy"
     Dim DataString As StringBuilder
     Private Sub corte_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.ClientesTableAdapter1.Fill(Me.PtoventaDataSet.clientes)
+
         If conn.State = ConnectionState.Closed Then
             conn.Open()
         End If
