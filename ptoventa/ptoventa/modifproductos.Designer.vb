@@ -26,6 +26,7 @@ Partial Public Class modifproductos
         Me.MenuItem2 = New System.Windows.Forms.MenuItem
         Me.MenuItem6 = New System.Windows.Forms.MenuItem
         Me.MenuItem7 = New System.Windows.Forms.MenuItem
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.MenuItem4 = New System.Windows.Forms.MenuItem
         Me.Label1 = New System.Windows.Forms.Label
         Me.txtbusqueda = New System.Windows.Forms.TextBox
@@ -46,7 +47,8 @@ Partial Public Class modifproductos
         Me.txtprecio = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
         Me.lstprecio = New System.Windows.Forms.ListBox
-        Me.MenuItem3 = New System.Windows.Forms.MenuItem
+        Me.Button3 = New System.Windows.Forms.Button
+        Me.lblmovimientos = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'mainMenu1
@@ -79,6 +81,11 @@ Partial Public Class modifproductos
         '
         Me.MenuItem7.Text = "2 - Guardar"
         '
+        'MenuItem3
+        '
+        Me.MenuItem3.Checked = True
+        Me.MenuItem3.Text = "Movimientos recientes"
+        '
         'MenuItem4
         '
         Me.MenuItem4.Text = "Menú Principal"
@@ -86,14 +93,14 @@ Partial Public Class modifproductos
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(4, 4)
+        Me.Label1.Location = New System.Drawing.Point(4, 3)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 15)
-        Me.Label1.Text = "Buscar Prod."
+        Me.Label1.Size = New System.Drawing.Size(48, 15)
+        Me.Label1.Text = "Buscar"
         '
         'txtbusqueda
         '
-        Me.txtbusqueda.Location = New System.Drawing.Point(86, 4)
+        Me.txtbusqueda.Location = New System.Drawing.Point(51, 1)
         Me.txtbusqueda.Name = "txtbusqueda"
         Me.txtbusqueda.Size = New System.Drawing.Size(87, 21)
         Me.txtbusqueda.TabIndex = 1
@@ -102,7 +109,7 @@ Partial Public Class modifproductos
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(0, 43)
+        Me.Label2.Location = New System.Drawing.Point(0, 45)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 10)
         Me.Label2.Text = "Codigo"
@@ -110,7 +117,7 @@ Partial Public Class modifproductos
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(66, 43)
+        Me.Label3.Location = New System.Drawing.Point(66, 45)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 10)
         Me.Label3.Text = "Descripcion"
@@ -119,7 +126,7 @@ Partial Public Class modifproductos
         '
         Me.Label5.BackColor = System.Drawing.Color.Black
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(0, 28)
+        Me.Label5.Location = New System.Drawing.Point(0, 38)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(240, 5)
         Me.Label5.Text = "Label5"
@@ -237,7 +244,7 @@ Partial Public Class modifproductos
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.Label4.Location = New System.Drawing.Point(198, 43)
+        Me.Label4.Location = New System.Drawing.Point(198, 45)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(39, 10)
         Me.Label4.Text = "Precio"
@@ -251,10 +258,21 @@ Partial Public Class modifproductos
         Me.lstprecio.TabIndex = 14
         Me.lstprecio.TabStop = False
         '
-        'MenuItem3
+        'Button3
         '
-        Me.MenuItem3.Checked = True
-        Me.MenuItem3.Text = "Refrescar productos"
+        Me.Button3.Location = New System.Drawing.Point(161, 1)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(72, 20)
+        Me.Button3.TabIndex = 37
+        Me.Button3.Text = "Actualizar"
+        '
+        'lblmovimientos
+        '
+        Me.lblmovimientos.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.lblmovimientos.ForeColor = System.Drawing.Color.Red
+        Me.lblmovimientos.Location = New System.Drawing.Point(4, 23)
+        Me.lblmovimientos.Name = "lblmovimientos"
+        Me.lblmovimientos.Size = New System.Drawing.Size(136, 15)
         '
         'modifproductos
         '
@@ -262,6 +280,8 @@ Partial Public Class modifproductos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(240, 268)
+        Me.Controls.Add(Me.lblmovimientos)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtprecio)
@@ -314,4 +334,6 @@ Partial Public Class modifproductos
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents lstprecio As System.Windows.Forms.ListBox
     Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents lblmovimientos As System.Windows.Forms.Label
 End Class

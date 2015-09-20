@@ -8,6 +8,7 @@ Imports System.Data
 Imports System.IO
 
 Module Funciones
+    
     Public fila, mover, generarnota, codventa, indice, cvCargarNota, i, elementos, optcorte, dia, mes, anio, dia1, mes1, anio1, ccliente As Integer
     Public desc, uni, codigo, fecharespaldo As String
     Public importe, precio, cantinput, cantcargar, preimporte, total As Decimal
@@ -20,6 +21,9 @@ Module Funciones
     Public datapedi As New SqlCeDataAdapter("SELECT * FROM ventas", conn)
     Public dataCargarClientes As New SqlCeDataAdapter("SELECT * FROM clientes ORDER BY codigocliente ASC", conn)
     Public dsped, dscorte, dsprod, dsclientes, dsdetalleNota As New DataSet
+    Public mov As Integer = 0
+    Public conteo As Integer = 1
+    Public log(0) As String
 
 
     Public Sub poblartablas(ByVal opt As Integer, ByVal optcorte As Integer)

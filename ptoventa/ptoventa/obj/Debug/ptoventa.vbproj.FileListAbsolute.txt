@@ -293,3 +293,4 @@ C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.exe
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.xml
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.pdb
 C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.clientes.resources
+C:\Users\Home\Desktop\PDV\ptoventa\ptoventa\obj\Debug\ptoventa.logcambios.resources
