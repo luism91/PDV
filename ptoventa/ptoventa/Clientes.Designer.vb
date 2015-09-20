@@ -125,6 +125,7 @@ Partial Public Class clientes
         '
         Me.txtnombre.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
         Me.txtnombre.Location = New System.Drawing.Point(44, 194)
+        Me.txtnombre.MaxLength = 50
         Me.txtnombre.Name = "txtnombre"
         Me.txtnombre.Size = New System.Drawing.Size(193, 18)
         Me.txtnombre.TabIndex = 35

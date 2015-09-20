@@ -46,6 +46,7 @@ Partial Public Class modifproductos
         Me.txtprecio = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
         Me.lstprecio = New System.Windows.Forms.ListBox
+        Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.SuspendLayout()
         '
         'mainMenu1
@@ -57,6 +58,7 @@ Partial Public Class modifproductos
         '
         Me.MenuItem1.MenuItems.Add(Me.MenuItem5)
         Me.MenuItem1.MenuItems.Add(Me.MenuItem2)
+        Me.MenuItem1.MenuItems.Add(Me.MenuItem3)
         Me.MenuItem1.Text = "Opciones"
         '
         'MenuItem5
@@ -178,8 +180,9 @@ Partial Public Class modifproductos
         Me.txtcodigo.Enabled = False
         Me.txtcodigo.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
         Me.txtcodigo.Location = New System.Drawing.Point(64, 178)
+        Me.txtcodigo.MaxLength = 12
         Me.txtcodigo.Name = "txtcodigo"
-        Me.txtcodigo.Size = New System.Drawing.Size(51, 18)
+        Me.txtcodigo.Size = New System.Drawing.Size(68, 18)
         Me.txtcodigo.TabIndex = 22
         Me.txtcodigo.TabStop = False
         '
@@ -187,8 +190,9 @@ Partial Public Class modifproductos
         '
         Me.txtdescripcion.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
         Me.txtdescripcion.Location = New System.Drawing.Point(64, 199)
+        Me.txtdescripcion.MaxLength = 30
         Me.txtdescripcion.Name = "txtdescripcion"
-        Me.txtdescripcion.Size = New System.Drawing.Size(141, 18)
+        Me.txtdescripcion.Size = New System.Drawing.Size(173, 18)
         Me.txtdescripcion.TabIndex = 23
         Me.txtdescripcion.TabStop = False
         '
@@ -224,8 +228,9 @@ Partial Public Class modifproductos
         '
         Me.txtprecio.Font = New System.Drawing.Font("Tahoma", 7.0!, System.Drawing.FontStyle.Regular)
         Me.txtprecio.Location = New System.Drawing.Point(64, 219)
+        Me.txtprecio.MaxLength = 10
         Me.txtprecio.Name = "txtprecio"
-        Me.txtprecio.Size = New System.Drawing.Size(51, 18)
+        Me.txtprecio.Size = New System.Drawing.Size(68, 18)
         Me.txtprecio.TabIndex = 24
         Me.txtprecio.TabStop = False
         '
@@ -245,6 +250,11 @@ Partial Public Class modifproductos
         Me.lstprecio.Size = New System.Drawing.Size(40, 90)
         Me.lstprecio.TabIndex = 14
         Me.lstprecio.TabStop = False
+        '
+        'MenuItem3
+        '
+        Me.MenuItem3.Checked = True
+        Me.MenuItem3.Text = "Refrescar productos"
         '
         'modifproductos
         '
@@ -303,4 +313,5 @@ Partial Public Class modifproductos
     Friend WithEvents txtprecio As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents lstprecio As System.Windows.Forms.ListBox
+    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
 End Class

@@ -27,8 +27,9 @@ Partial Public Class ventas
         Me.MenuItem3 = New System.Windows.Forms.MenuItem
         Me.MenuItem2 = New System.Windows.Forms.MenuItem
         Me.MenuItem6 = New System.Windows.Forms.MenuItem
-        Me.MenuItem4 = New System.Windows.Forms.MenuItem
         Me.MenuItem5 = New System.Windows.Forms.MenuItem
+        Me.MenuItem7 = New System.Windows.Forms.MenuItem
+        Me.MenuItem4 = New System.Windows.Forms.MenuItem
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.clientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -68,7 +69,6 @@ Partial Public Class ventas
         Me.Label16 = New System.Windows.Forms.Label
         Me.SP = New System.IO.Ports.SerialPort(Me.components)
         Me.ClientesTableAdapter1 = New ptoventa.ptoventaDataSetTableAdapters.clientesTableAdapter
-        Me.MenuItem7 = New System.Windows.Forms.MenuItem
         Me.lblcantidad = New System.Windows.Forms.Label
         CType(Me.clientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PtoventaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,13 +106,17 @@ Partial Public Class ventas
         '
         Me.MenuItem6.Text = "Cargar Nota"
         '
-        'MenuItem4
-        '
-        Me.MenuItem4.Text = "Ir a Menu Prin."
-        '
         'MenuItem5
         '
         Me.MenuItem5.Text = "Imprimir pedido"
+        '
+        'MenuItem7
+        '
+        Me.MenuItem7.Text = "Cerrar venta"
+        '
+        'MenuItem4
+        '
+        Me.MenuItem4.Text = "Ir a Menu Prin."
         '
         'Label2
         '
@@ -439,10 +443,6 @@ Partial Public Class ventas
         'ClientesTableAdapter1
         '
         Me.ClientesTableAdapter1.ClearBeforeFill = True
-        '
-        'MenuItem7
-        '
-        Me.MenuItem7.Text = "Cerrar venta"
         '
         'lblcantidad
         '

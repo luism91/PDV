@@ -4,7 +4,7 @@ Imports System
 Imports System.Data
 
 Public Class modifproductos
-
+    Dim tablaquery As New DataView
     Dim tprod As New DataTable
 
 
@@ -15,6 +15,7 @@ Public Class modifproductos
         End If
 
         poblartablas(3, 0)
+        tablaquery.Table = dsprod.Tables("productos2")
         lstdescripcion.DataSource = tablaquery
         lstdescripcion.DisplayMember = "descripcion"
         lstprecio.DataSource = tablaquery
@@ -46,7 +47,7 @@ Public Class modifproductos
             cmd.CommandText = "UPDATE productos SET descripcion = '" & UCase(txtdescripcion.Text) & "', precio='" & Val(txtprecio.Text) & "' WHERE codigo ='" & txtcodigo.Text & "'"
             cmd.ExecuteNonQuery()
             MsgBox("Producto modificado con exito", MsgBoxStyle.OkOnly, "Modificar Productos")
-            poblartablas(3, 0)
+            'poblartablas(3, 0)
         Catch ex As SqlCeException
             MsgBox(ex.ToString, MsgBoxStyle.OkOnly, "Error")
         End Try
@@ -67,7 +68,7 @@ Public Class modifproductos
                 cmd.Connection = conn
                 cmd.CommandText = "DELETE FROM productos WHERE codigo = '" & lstcodigo.Text & "' "
                 cmd.ExecuteNonQuery()
-                poblartablas(3, 0)
+                'poblartablas(3, 0)
                 txtbusqueda.Focus()
                 txtbusqueda.Text = ""
             Catch ex As Exception
@@ -93,7 +94,7 @@ Public Class modifproductos
                 txtprecio.Text = ""
                 txtbusqueda.Text = ""
                 txtbusqueda.Focus()
-                poblartablas(3, 0)
+                'poblartablas(3, 0)
             Catch excep As SqlCeException
                 MsgBox(excep.Message, MsgBoxStyle.OkOnly, "Error")
             End Try
@@ -132,5 +133,9 @@ Public Class modifproductos
         Else
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub MenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
+        poblartablas(3, 0)
     End Sub
 End Class

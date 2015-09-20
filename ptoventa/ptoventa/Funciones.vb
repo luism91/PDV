@@ -61,6 +61,7 @@ Module Funciones
                 dsprod.Clear()
                 dataprod.Fill(dsprod, "productos2")
                 tablaquery.Table = dsprod.Tables("productos2")
+                tablaquery.Sort = "codigo ASC"
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical, "Error")
             End Try

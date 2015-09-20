@@ -3,15 +3,14 @@ Imports System.Text
 
 Public Class ventas
 
-    Dim elementos, i, rowview As Integer
+    Dim elementos, i, i2, rowview, test As Integer
     Dim desc, codigo, errorimp As String
-
     Dim tprod As New DataTable
-    Dim tped As New DataTable
-
     Dim currentDate As DateTime = DateTime.Now
     Dim dateString As String = "dd-MM-yyyy"
     Dim DataString As StringBuilder
+
+    Dim drarray() As DataRow
     Public Function imprimirecibo(ByVal tiporecibo As String) As Integer
 
         DataString = New StringBuilder()
@@ -21,7 +20,7 @@ Public Class ventas
                 SP.Open()
             End If
 
-            DataString.Append("! U1 SETLP 7 3 27" & vbCrLf)
+            DataString.Append("! U1 SETLP 4 0 27" & vbCrLf)
             DataString.Append("! U1 XY 10 0" & vbCrLf)
             DataString.Append(ComboBox1.Text & vbCrLf)
             DataString.Append("! U1 XY 10 40" & vbCrLf)
@@ -29,18 +28,18 @@ Public Class ventas
             DataString.Append("! U1 XY 10 80" & vbCrLf)
             DataString.Append(tiporecibo & vbCrLf)
             DataString.Append("! U1 SETLP 7 0 20" & vbCrLf)
-            DataString.Append("! U1 XY 300 80" & vbCrLf)
+            DataString.Append("! U1 XY 360 80" & vbCrLf)
             DataString.Append("Folio:" & vbCrLf)
-            DataString.Append("! U1 XY 380 80" & vbCrLf)
+            DataString.Append("! U1 XY 440 80" & vbCrLf)
             DataString.Append(codventa & vbCrLf)
 
 
             DataString.Append("! U1 SETLP 7 0 20" & vbCrLf)
-            DataString.Append("! U1 XY 10 130" & vbCrLf)
+            DataString.Append("! U1 XY 5 130" & vbCrLf)
             DataString.Append("Cant." & vbCrLf)
-            DataString.Append("! U1 XY 80 130" & vbCrLf)
+            DataString.Append("! U1 XY 70 130" & vbCrLf)
             DataString.Append("Descripcion" & vbCrLf)
-            DataString.Append("! U1 XY 390 130" & vbCrLf)
+            DataString.Append("! U1 XY 395 130" & vbCrLf)
             DataString.Append("Prec." & vbCrLf)
             DataString.Append("! U1 XY 490 130" & vbCrLf)
             DataString.Append("Imp." & vbCrLf)
@@ -53,11 +52,11 @@ Public Class ventas
                 lstcantidad.SelectedIndex = elementos
                 lstimporte.SelectedIndex = elementos
 
-                DataString.Append("! U1 XY 10 " & fila & "" & vbCrLf)
+                DataString.Append("! U1 XY 5 " & fila & "" & vbCrLf)
                 DataString.Append("" & lstcantidad.Text & "" & vbCrLf)
-                DataString.Append("! U1 XY 80 " & fila & "" & vbCrLf)
+                DataString.Append("! U1 XY 70 " & fila & "" & vbCrLf)
                 DataString.Append("" & lstdescripcion.Text & "" & vbCrLf)
-                DataString.Append("! U1 XY 390 " & fila & "" & vbCrLf)
+                DataString.Append("! U1 XY 395 " & fila & "" & vbCrLf)
                 DataString.Append("" & lstprecio.Text & "" & vbCrLf)
                 DataString.Append("! U1 XY 490 " & fila & "" & vbCrLf)
                 DataString.Append("" & lstimporte.Text & "" & vbCrLf)
@@ -66,14 +65,14 @@ Public Class ventas
             Next Me.elementos
 
 
-            DataString.Append("! U1 SETLP 7 4 27" & vbCrLf)
+            DataString.Append("! U1 SETLP 4 0 35" & vbCrLf)
             DataString.Append("! U1 XY 55 1090" & vbCrLf)
             DataString.Append("Importe Total: " & "$" & (Format(CDec(total), ".00")) & "" & vbCrLf)
 
-            DataString.Append("! U1 SETLP 7 0 20" & vbCrLf)
-            DataString.Append("! U1 XY 10 1290" & vbCrLf)
+            DataString.Append("! U1 SETLP 5 0 20" & vbCrLf)
+            DataString.Append("! U1 XY 10 1190" & vbCrLf)
             DataString.Append("-------------------" & vbCrLf)
-            DataString.Append("! U1 XY 10 1310" & vbCrLf)
+            DataString.Append("! U1 XY 10 1210" & vbCrLf)
             DataString.Append("RECIBI" & vbCrLf)
 
             SP.WriteLine(DataString.ToString())
@@ -85,8 +84,116 @@ Public Class ventas
         End Try
 
     End Function
-    Public Sub calcimporte()
+    Public Sub pruebaagregar()
 
+        For Me.i2 = 0 To 34
+            txtbusqueda.Text = "abg"
+            txtcantidad.Text = 1
+            agregarproductos()
+        Next Me.i2
+
+    End Sub
+    Public Sub agregarproductos()
+
+        If ComboBox1.Enabled = True Then
+            generarnota = 1
+            ComboBox1.Enabled = False
+        End If
+
+        If lstdescripcion.Items.Count = 34 Then
+            MsgBox("No puedes agregar mas productos", MsgBoxStyle.OkOnly, "Limite de productos")
+            txtcantidad.Text = ""
+            txtbusqueda.Text = ""
+            txtbusqueda.Focus()
+
+        Else
+            If generarnota = 1 Then
+
+                poblartablas(0, 0)
+                tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
+
+                If tablacargas.Count = 0 Then
+                    Try
+                        ComboBox1.Enabled = False
+                        cmd.Connection = conn
+                        cmd.CommandText = "INSERT INTO ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedValue & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
+                        cmd.ExecuteNonQuery()
+                        generarnota = 0
+                        poblartablas(0, 0)
+                        tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
+                        codventa = tablacargas(0)("codigoventa")
+                    Catch ex As Exception
+                        MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
+                    End Try
+                Else
+                    MsgBox("Ya hay una nota abierta con este cliente!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly)
+                    generarnota = 0
+                    cargarnota(ComboBox2.SelectedValue)
+                    txtbusqueda.Focus()
+                    Exit Sub
+                End If
+            End If
+
+            If generarnota = 0 Then
+
+                'Query para instertar productos a la nota
+
+                Try
+                    'If txtcantidad.Text = Nothing Then
+                    '    cantidad = 0
+                    '    txtcantidad.Text = 0
+                    'End If
+
+                    desc = lstdescripcion2.Text
+                    precio = Val(lstprecio2.Text)
+                    codigo = lstcodigo2.Text
+                    importe = Val(lstprecio2.Text) * Val(txtcantidad.Text)
+                    cantidad = Val(txtcantidad.Text)
+                    cmd.Connection = conn
+                    cmd.CommandText = "INSERT INTO detalle_ventas(codigoventa,codigo,cantidad) VALUES('" & codventa & "','" & codigo & "','" & cantidad & "')"
+                    cmd.ExecuteNonQuery()
+
+                    lstcodigo.Items.Add(codigo)
+                    lstdescripcion.Items.Add(desc)
+                    lstprecio.Items.Add(Format(CDec(precio), ".00"))
+                    lstimporte.Items.Add(Format(CDec(importe), ".00"))
+                    lstcantidad.Items.Add(cantidad)
+                    lblcantidad.Text = lstdescripcion.Items.Count
+
+                    If lstdescripcion3.Items.Count = 2 Then
+                        lstcantidad3.Items.Clear()
+                        lstdescripcion3.Items.Clear()
+                        lstprecio3.Items.Clear()
+                        lstimp4.Items.Clear()
+
+                        lstdescripcion3.Items.Add(desc)
+                        lstprecio3.Items.Add(Format(CDec(precio), ".00"))
+                        lstimp4.Items.Add(Format(CDec(importe), ".00"))
+                        lstcantidad3.Items.Add(cantidad)
+                    Else
+                        lstdescripcion3.Items.Add(desc)
+                        lstprecio3.Items.Add(Format(CDec(precio), ".00"))
+                        lstimp4.Items.Add(Format(CDec(importe), ".00"))
+                        lstcantidad3.Items.Add(cantidad)
+                    End If
+                Catch ex As Exception
+                    MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
+                End Try
+                precio = 0
+                importe = 0
+                cantidad = 0
+                total = 0
+                desc = ""
+                txtcantidad.Text = ""
+                txtbusqueda.Text = ""
+                txtbusqueda.Focus()
+            End If
+
+
+        End If
+    End Sub
+    Public Sub calcimporte()
+        total =0 
         For Me.i = 0 To (lstimporte.Items.Count - 1)
             lstimporte.SelectedIndex = Me.i
             total = (total) + (Val(lstimporte.Text))
@@ -198,7 +305,6 @@ Public Class ventas
         lstprecio2.DisplayMember = "precio"
         lstcodigo2.DataSource = tablaquery
         lstcodigo2.DisplayMember = "codigo"
-        generarnota = 0
 
     End Sub
     Private Sub txtbusqueda_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtbusqueda.KeyDown
@@ -212,116 +318,21 @@ Public Class ventas
 
     End Sub
     Private Sub txtbusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
-        tablaquery.RowFilter = ("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'")
+
+        tprod.Select("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'", "codigo ASC", DataViewRowState.CurrentRows)
+        'tablaquery.RowFilter = ("codigo LIKE '" & UCase(txtbusqueda.Text) & "%'")
     End Sub
 
     Private Sub btnagregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnagregar.Click
-
-
-        If ComboBox1.Enabled = True Then
-            generarnota = 1
-            ComboBox1.Enabled = False
-        End If
-
-        If lstdescripcion.Items.Count = 34 Then
-            MsgBox("No puedes agregar mas productos", MsgBoxStyle.OkOnly, "Limite de productos")
-            txtcantidad.Text = ""
-            txtbusqueda.Text = ""
-            txtbusqueda.Focus()
-
-        Else
-            If ComboBox2.SelectedIndex >= 1 And generarnota = 1 Then
-
-                poblartablas(0, 0)
-                tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
-
-                If tablacargas.Count = 0 Then
-                    Try
-                        ComboBox1.Enabled = False
-                        cmd.Connection = conn
-                        cmd.CommandText = "INSERT INTO ventas(codigocliente,dia,mes,anio,venta_finalizada) VALUES('" & ComboBox2.SelectedValue & "','" & Date.Now.Day & "','" & Date.Now.Month & "','" & Date.Now.Year & "','0')"
-                        cmd.ExecuteNonQuery()
-                        generarnota = 0
-                        poblartablas(0, 0)
-                        tablacargas.RowFilter = "codigocliente ='" & ComboBox2.SelectedValue & "' AND venta_finalizada =0"
-                        codventa = tablacargas(0)("codigoventa")
-                    Catch ex As Exception
-                        MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
-                    End Try
-                Else
-                    MsgBox("Ya hay una nota abierta con este cliente!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly)
-                    generarnota = 0
-                    cargarnota(ComboBox2.SelectedValue)
-                    txtbusqueda.Focus()
-                    Exit Sub
-                End If
-            End If
-
-            If generarnota = 0 Then
-
-                'Query para instertar productos a la nota
-
-                Try
-                    If txtcantidad.Text = Nothing Then
-                        cantidad = 0
-                        txtcantidad.Text = 0
-                    End If
-
-                    desc = lstdescripcion2.Text
-                    precio = Val(lstprecio2.Text)
-                    codigo = lstcodigo2.Text
-                    importe = Val(lstprecio2.Text) * Val(txtcantidad.Text)
-                    cantidad = Val(txtcantidad.Text)
-                    cmd.Connection = conn
-                    cmd.CommandText = "INSERT INTO detalle_ventas(codigoventa,codigo,cantidad) VALUES('" & codventa & "','" & codigo & "','" & cantidad & "')"
-                    cmd.ExecuteNonQuery()
-
-                    lstcodigo.Items.Add(codigo)
-                    lstdescripcion.Items.Add(desc)
-                    lstprecio.Items.Add(Format(CDec(precio), ".00"))
-                    lstimporte.Items.Add(Format(CDec(importe), ".00"))
-                    lstcantidad.Items.Add(cantidad)
-                    lblcantidad.Text = lstdescripcion.Items.Count
-
-                    If lstdescripcion3.Items.Count = 2 Then
-                        lstcantidad3.Items.Clear()
-                        lstdescripcion3.Items.Clear()
-                        lstprecio3.Items.Clear()
-                        lstimp4.Items.Clear()
-
-                        lstdescripcion3.Items.Add(desc)
-                        lstprecio3.Items.Add(Format(CDec(precio), ".00"))
-                        lstimp4.Items.Add(Format(CDec(importe), ".00"))
-                        lstcantidad3.Items.Add(cantidad)
-                    Else
-                        lstdescripcion3.Items.Add(desc)
-                        lstprecio3.Items.Add(Format(CDec(precio), ".00"))
-                        lstimp4.Items.Add(Format(CDec(importe), ".00"))
-                        lstcantidad3.Items.Add(cantidad)
-                    End If
-                Catch ex As Exception
-                    MsgBox(ex.Message, MsgBoxStyle.OkOnly + MsgBoxStyle.Critical)
-                End Try
-
-            End If
-
-            precio = 0
-            importe = 0
-            cantidad = 0
-            desc = ""
-            txtcantidad.Text = ""
-            txtbusqueda.Text = ""
-            txtbusqueda.Focus()
-        End If
-
+        agregarproductos()
     End Sub
 
     Private Sub txtcantidad_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtcantidad.KeyDown
+
         If e.KeyCode = Keys.Enter Then
-            btnagregar_Click(Nothing, Nothing)
-            txtcantidad.Text = ""
-            txtbusqueda.Text = ""
+            agregarproductos()
         End If
+
         End Sub
 
     Private Sub lstcantidad_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstcantidad.SelectedIndexChanged
@@ -428,14 +439,6 @@ Public Class ventas
             e.Handled = True
         End If
     End Sub
-
-   
-
-    Private Sub MenuItem7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-
-    End Sub
-
     Private Sub lstdescripcion2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles lstdescripcion2.KeyDown
 
         If e.KeyCode = Keys.Enter Then
@@ -530,7 +533,7 @@ Public Class ventas
 
     Private Sub MenuItem7_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem7.Click
         Try
-            If lstdescripcion.Items.Count > 1 Then
+            If lstdescripcion.Items.Count > 0 Then
                 calcimporte()
                 cmd.Connection = conn
                 cmd.CommandText = "UPDATE ventas SET venta_finalizada= '1',importe='" & total & "' WHERE codigoventa ='" & codventa & "'"
@@ -563,5 +566,9 @@ Public Class ventas
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
         End Try
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        pruebaagregar()
     End Sub
 End Class

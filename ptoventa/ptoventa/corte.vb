@@ -149,6 +149,7 @@ Public Class corte
                 MsgBox(ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
             End Try
         End If
+        total = 0
     End Sub
     Private Sub lstcodventa_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstcodventa.SelectedIndexChanged
         lstnombrec.SelectedIndex = lstcodventa.SelectedIndex

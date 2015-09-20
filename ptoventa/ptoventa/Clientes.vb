@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.SqlServerCe
 Public Class clientes
+
     Private Sub clientes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         If conn.State = ConnectionState.Closed Then
