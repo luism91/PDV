@@ -21,8 +21,16 @@ Public Class modifproductos
         lstcodigo.DisplayMember = "codigo"
 
     End Sub
+
+    Private Sub txtbusqueda_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtbusqueda.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+            tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
+        End If
+
+    End Sub
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtbusqueda.TextChanged
-        tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
+        'tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
     End Sub
     Private Sub MenuItem4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem4.Click
         Dim principal As New principal
@@ -58,6 +66,7 @@ Public Class modifproductos
         txtprecio.Text = ""
         txtbusqueda.Focus()
         txtbusqueda.Text = ""
+
 
        
     End Sub
@@ -153,6 +162,11 @@ Public Class modifproductos
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        mov = 0
+        conteo = 1
+        lblmovimientos.Text = Nothing
         poblartablas(3, 0)
+        txtbusqueda.Text = ""
+        tablaquery.RowFilter = ("codigo LIKE '" & txtbusqueda.Text & "%'")
     End Sub
 End Class
